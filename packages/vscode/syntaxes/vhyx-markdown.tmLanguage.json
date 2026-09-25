@@ -1,0 +1,17 @@
+{
+  "fileTypes": [],
+  "injectionSelector": "L:text.html.markdown",
+  "scopeName": "markdown.vhyx.codeblock",
+  "patterns": [{ "include": "#vhyx-code-block" }],
+  "repository": {
+    "vhyx-code-block": {
+      "begin": "(^|\\G)(\\s*)(`{3,}|~{3,})\\s*(?i:(vhyx|vhyxchart)(\\s+[^`~]*)?$)",
+      "beginCaptures": { "3": { "name": "punctuation.definition.markdown" }, "4": { "name": "fenced_code.block.language.markdown" } },
+      "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
+      "endCaptures": { "3": { "name": "punctuation.definition.markdown" } },
+      "patterns": [
+        { "begin": "(^|\\G)(\\s*)(.*)", "while": "(^|\\G)(?!\\s*([`~]{3,})\\s*$)", "contentName": "meta.embedded.block.vhyx", "patterns": [{ "include": "source.vhyx" }] }
+      ]
+    }
+  }
+}

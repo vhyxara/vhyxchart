@@ -1,0 +1,74 @@
+{
+  "name": "vhyxchart-vscode",
+  "displayName": "VhyxChart — animated diagrams",
+  "description": "Live, animated architecture, flow, sequence and algorithm diagrams in Markdown preview and .vhyx files. Mermaid-compatible syntax with scenarios that move.",
+  "version": "0.1.0",
+  "publisher": "vhyxara",
+  "license": "MIT",
+  "private": true,
+  "icon": "media/icon.png",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Visualization", "Programming Languages", "Other"],
+  "keywords": ["diagram", "mermaid", "animation", "architecture", "markdown", "flowchart", "sequence"],
+  "main": "./dist/extension.js",
+  "activationEvents": ["onLanguage:vhyx", "onLanguage:markdown"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "vhyx",
+        "aliases": ["VhyxChart", "vhyx"],
+        "extensions": [".vhyx", ".vhyxchart"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      { "language": "vhyx", "scopeName": "source.vhyx", "path": "./syntaxes/vhyx.tmLanguage.json" },
+      {
+        "scopeName": "markdown.vhyx.codeblock",
+        "path": "./syntaxes/vhyx-markdown.tmLanguage.json",
+        "injectTo": ["text.html.markdown"],
+        "embeddedLanguages": { "meta.embedded.block.vhyx": "vhyx" }
+      }
+    ],
+    "snippets": [
+      { "language": "vhyx", "path": "./snippets/vhyx.json" },
+      { "language": "markdown", "path": "./snippets/markdown.json" }
+    ],
+    "markdown.markdownItPlugins": true,
+    "markdown.previewScripts": ["./dist/preview.js"],
+    "commands": [
+      { "command": "vhyxchart.openPreview", "title": "Open Animated Preview to the Side", "category": "VhyxChart", "icon": "$(play-circle)" },
+      { "command": "vhyxchart.exportSvg", "title": "Export Animated SVG", "category": "VhyxChart" },
+      { "command": "vhyxchart.exportHtml", "title": "Export Interactive HTML", "category": "VhyxChart" }
+    ],
+    "menus": {
+      "editor/title": [
+        { "command": "vhyxchart.openPreview", "when": "editorLangId == vhyx", "group": "navigation" }
+      ]
+    },
+    "keybindings": [
+      { "command": "vhyxchart.openPreview", "key": "ctrl+k v", "mac": "cmd+k v", "when": "editorLangId == vhyx" }
+    ],
+    "configuration": {
+      "title": "VhyxChart",
+      "properties": {
+        "vhyxchart.theme": { "type": "string", "enum": ["auto", "light", "dark"], "default": "auto", "description": "Diagram theme in previews." },
+        "vhyxchart.renderMermaidFences": { "type": "boolean", "default": false, "description": "Also render ```mermaid fences with VhyxChart in the Markdown preview." },
+        "vhyxchart.autoplay": { "type": "boolean", "default": true, "description": "Start scenarios automatically in previews." }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "package": "node build.mjs && npx --yes @vscode/vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/vscode": "~1.85.0",
+    "@vhyxchart/core": "workspace:*",
+    "esbuild": "^0.24.0",
+    "markdown-it": "^14.1.0",
+    "@types/markdown-it": "^14.1.0"
+  }
+}
