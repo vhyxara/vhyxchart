@@ -405,6 +405,42 @@ export function layoutFlow(diagram: FlowDiagram): FlowLayout {
     });
   }
 
+  // ── Parallel edges: fan out edges that share the same pair of nodes ──
+  const pairs = new Map<string, LaidOutEdge[]>();
+  for (const e of edges) {
+    if (e.from === e.to) continue;
+    const key = [e.from, e.to].sort().join('\u0000');
+    pairs.set(key, [...(pairs.get(key) ?? []), e]);
+  }
+  for (const group of pairs.values()) {
+    if (group.length < 2) continue;
+    // Stable orientation: measure the normal against the canonical (sorted) direction.
+    const [ka, kb] = [group[0]!.from, group[0]!.to].sort();
+    const A = laidNodes.get(ka as string) as LaidOutNode;
+    const B = laidNodes.get(kb as string) as LaidOutNode;
+    const len = Math.hypot(B.x - A.x, B.y - A.y) || 1;
+    const nx = -(B.y - A.y) / len;
+    const ny = (B.x - A.x) / len;
+    group.forEach((e, i) => {
+      const d = (i - (group.length - 1) / 2) * 24;
+      const move = (p: Point, f: number): Point => ({ x: p.x + nx * d * f, y: p.y + ny * d * f });
+      const segs = e.route.segments;
+      e.route = {
+        segments: segs.map((sg, k) => ({
+          p0: move(sg.p0, k === 0 ? 0.35 : 1),
+          c1: move(sg.c1, 1),
+          c2: move(sg.c2, 1),
+          p1: move(sg.p1, k === segs.length - 1 ? 0.35 : 1),
+        })),
+      };
+      e.path = routeToPath(e.route);
+      if (e.label) {
+        const mid = pointAt(e.route, 0.5);
+        e.label = { ...e.label, x: mid.x, y: mid.y };
+      }
+    });
+  }
+
   // ── Groups ───────────────────────────────────────────────
   const depthOf = (id: string): number => {
     let d = 0;

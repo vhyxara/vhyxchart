@@ -86,6 +86,12 @@ describe('layered flow layout', () => {
     expect(c.width).toBeLessThanOrEqual(240);
   });
 
+  it('fans out parallel edges so their labels do not collide', () => {
+    const l = flowLayout('flowchart LR\n a -->|ok| b\n b -.->|fail| a\n a -.->|enables| b');
+    const ys = l.edges.map((e) => Math.round(e.label!.y));
+    expect(new Set(ys).size).toBe(3);
+  });
+
   it('handles an empty diagram', () => {
     const l = flowLayout('');
     expect(l.nodes).toEqual([]);
