@@ -8,7 +8,7 @@ export interface ArrayTracer {
   compare(i: number, j: number): number;
   swap(i: number, j: number): void;
   set(i: number, value: CellValue): void;
-  mark(i: number | number[], state?: 'done' | 'active' | 'warn' | 'error'): void;
+  mark(i: number | number[], state?: 'done' | 'active' | 'warn' | 'error' | 'skipped'): void;
   unmark(i: number | number[]): void;
   pointer(name: string, index: number | null): void;
   note(text: string): void;

@@ -1,0 +1,16 @@
+{
+  "name": "@vhyxchart/examples",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Curated VhyxChart examples shared by docs, playground and tests.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" } },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": { "@vhyxchart/core": "workspace:*" }
+}

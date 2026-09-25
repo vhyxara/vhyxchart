@@ -1,0 +1,30 @@
+{
+  "name": "@vhyxchart/docs",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3100",
+    "build": "next build",
+    "start": "next start --port 3100",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vhyxchart/core": "workspace:*",
+    "@vhyxchart/examples": "workspace:*",
+    "@vhyxchart/react": "workspace:*",
+    "@vhyxseal/core": "1.0.0-rc.3",
+    "@vhyxui/blocks": "0.1.0-alpha",
+    "@vhyxui/core": "0.2.0-alpha",
+    "@vhyxui/react": "0.4.0-alpha",
+    "@vhyxui/tokens": "0.2.0-alpha",
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.4.0"
+  }
+}
