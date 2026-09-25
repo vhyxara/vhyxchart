@@ -1,0 +1,8 @@
+src/**
+tests/**
+node_modules/**
+build.mjs
+tsconfig.json
+vitest.config.ts
+media/icon.svg
+**/*.map

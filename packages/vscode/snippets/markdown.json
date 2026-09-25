@@ -1,0 +1,7 @@
+{
+  "VhyxChart diagram": {
+    "prefix": ["vhyx", "diagram"],
+    "body": ["```vhyx", "flowchart LR", "  ${1:a} --> ${2:b}", "", "scenario ${3:Run}", "  ${1:a} -> ${2:b}", "  ${2:b} is done", "```", "$0"],
+    "description": "Animated VhyxChart diagram (renders in Markdown preview)"
+  }
+}
