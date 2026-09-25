@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Experiment 7 — Graph Presentation Spike (BFS/DFS)</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f5f5;
+    color: #111;
+    padding: 2rem;
+  }
+  h1 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+  p.sub { color: #555; margin-top: 0; margin-bottom: 1.25rem; font-size: 0.9rem; }
+
+  #graph-svg {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+
+  /* Fixed positions, authored by hand in graph.js — never computed, never
+     repositioned. Only fill/stroke (persistent 'discovered', transient
+     'visiting'/'traversing') ever change, same no-motion decision Section 6
+     records and Experiment 6 already tested for sequences. */
+  .node { fill: #fff; stroke: #999; stroke-width: 2; }
+  .node.discovered { fill: #b7f5c0; }
+  .node.visiting { stroke: #d4650f; stroke-width: 4; }
+  .node-label {
+    fill: #111;
+    font-family: ui-monospace, monospace;
+    font-size: 15px;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+  }
+  .edge { stroke: #999; stroke-width: 2; }
+  .edge.traversing { stroke: #d4650f; stroke-width: 4; }
+
+  fieldset {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.9rem;
+  }
+  legend { font-size: 0.85rem; color: #555; padding: 0 0.4rem; }
+  label { margin-right: 1rem; font-size: 0.9rem; cursor: pointer; }
+
+  #controls { margin-bottom: 1rem; }
+  button {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.9rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  button:disabled { cursor: not-allowed; opacity: 0.5; }
+
+  #status {
+    font-family: ui-monospace, monospace;
+    font-size: 0.9rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    white-space: pre-wrap;
+    max-width: 640px;
+  }
+</style>
+</head>
+<body>
+  <h1>Experiment 7 — Graph Presentation Spike (BFS/DFS)</h1>
+  <p class="sub">
+    Real tarball-installed <code>@vhyxui/visual-runtime</code>, no build step.
+    Directed graph A&rarr;B, A&rarr;C, B&rarr;D, C&rarr;D, D&rarr;E — same topology as Experiment 4.
+    Node positions are authored by hand below and never move; only color/highlight changes.
+  </p>
+
+  <fieldset>
+    <legend>Event history (same Structure, two different Runtime histories)</legend>
+    <label><input type="radio" name="algo" value="bfs" id="algo-bfs" checked /> BFS</label>
+    <label><input type="radio" name="algo" value="dfs" id="algo-dfs" /> DFS</label>
+  </fieldset>
+
+  <svg id="graph-svg" width="400" height="420" viewBox="0 0 400 420">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#999" />
+      </marker>
+      <marker id="arrow-active" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4650f" />
+      </marker>
+    </defs>
+  </svg>
+
+  <div id="controls">
+    <button id="btn-step">Step</button>
+    <button id="btn-play">Play</button>
+    <button id="btn-pause" disabled>Pause</button>
+    <button id="btn-reset">Reset</button>
+  </div>
+
+  <div id="status">Loading…</div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "@vhyxui/visual-runtime": "../node_modules/@vhyxui/visual-runtime/dist/index.js",
+      "@vhyxui/core": "../node_modules/@vhyxui/core/dist/errors.js"
+    }
+  }
+  </script>
+  <script type="module" src="./graph.js"></script>
+</body>
+</html>
