@@ -1,7 +1,7 @@
 # VhyxChart — Notes
 
-## ⚠️ Push status
-Local branch `claude/bold-davinci-7ucvi0` holds all commits. Push failed with 403 (Claude GitHub App has no access to `vhyxara`). Reconnect GitHub at https://claude.ai/connect-github, install the app on `vhyxara/vhyxchart`, then `git push -u origin claude/bold-davinci-7ucvi0`. A bundle is at `/home/user/bundles/vhyxchart.bundle` in the session container.
+## Push status
+Resolved 2026-09-25: GitHub App access was granted and branch `claude/bold-davinci-7ucvi0` is pushed to origin.
 
 ## Publishing (you run it — nothing was published)
 1. Publish VhyxSeal rc.3 and VhyxUI first (their notes.md).
