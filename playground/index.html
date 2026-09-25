@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Experiment 6 — Bubble Sort Presentation Spike</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f5f5;
+    color: #111;
+    padding: 2rem;
+  }
+  h1 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+  p.sub { color: #555; margin-top: 0; margin-bottom: 1.5rem; font-size: 0.9rem; }
+
+  #row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Fixed boxes, positioned once by flex layout, never repositioned again.
+     Only background-color and text content ever change (Section 6: frozen
+     positions, no motion — instant color/content swap, no transitions). */
+  .cell {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 2px solid #999;
+    border-radius: 4px;
+    background: #fff;
+    color: #111;
+  }
+  .cell.comparing { background: #fff3b0; border-color: #d4b106; }
+  .cell.swapping  { background: #ffd0a1; border-color: #d4650f; }
+  .cell.sorted    { background: #b7f5c0; border-color: #2f9e44; }
+
+  #controls { margin-bottom: 1rem; }
+  button {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.9rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  button:disabled { cursor: not-allowed; opacity: 0.5; }
+
+  #status {
+    font-family: ui-monospace, monospace;
+    font-size: 0.9rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    white-space: pre-wrap;
+    max-width: 640px;
+  }
+</style>
+</head>
+<body>
+  <h1>Experiment 6 — Minimal Browser Presentation Spike (Bubble Sort)</h1>
+  <p class="sub">
+    Real tarball-installed <code>@vhyxui/visual-runtime</code>, no build step.
+    Positions never change — only color and displayed value change.
+  </p>
+
+  <div id="row"></div>
+
+  <div id="controls">
+    <button id="btn-step">Step</button>
+    <button id="btn-play">Play</button>
+    <button id="btn-pause" disabled>Pause</button>
+    <button id="btn-reset">Reset</button>
+  </div>
+
+  <div id="status">Loading…</div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "@vhyxui/visual-runtime": "../node_modules/@vhyxui/visual-runtime/dist/index.js",
+      "@vhyxui/core": "../node_modules/@vhyxui/core/dist/errors.js"
+    }
+  }
+  </script>
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
