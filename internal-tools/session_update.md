@@ -467,3 +467,84 @@ _Claude Code: append a new entry here at the end of every task, using the JSON r
   ]
 }
 ```
+
+
+```json
+{
+  "entry": 8,
+  "date": "2026-09-25",
+  "task": "Turn the validated visual-runtime model into the VhyxChart product (engine, React, CLI, VS Code, docs, playground)",
+  "implementation_completed": true,
+  "files_changed": [
+    "package.json, pnpm-workspace.yaml, turbo.json, tsconfig.base.json (monorepo)",
+    "experiments/visual-runtime-v0/** (moved, unchanged)",
+    "packages/core/**",
+    "packages/react/**",
+    "packages/cli/**",
+    "packages/vscode/**",
+    "packages/examples/**",
+    "apps/docs/**",
+    "apps/playground/**",
+    ".tarballs/*",
+    "scripts/sync-siblings.sh",
+    ".github/workflows/ci.yml",
+    "README.md",
+    "LICENSE",
+    "internal-tools/{context,architecture,notes}.md",
+    "internal-tools/decision.md (appended)"
+  ],
+  "what_changed": [
+    "Mermaid-compatible parser (flowchart, sequence, state) + array diagrams + scenario language; line-accurate diagnostics with suggestions; never throws",
+    "Deterministic layered layout with group-aware crossing reduction, isotonic coordinates, spline routing, parallel-edge fan-out",
+    "Timeline compiler and pure frameAt(t); array value identity through swaps",
+    "Themeable SVG renderer and SMIL animated export (plays on GitHub)",
+    "Browser player (controls, keyboard, reduced motion, off-screen pause), <vhyx-chart>, autoRender, 30 KB gzip global bundle",
+    "@vhyxchart/react (component, headless hook, server component)",
+    "@vhyxchart/cli (render, html, check)",
+    "VS Code extension (markdown preview, language, diagnostics, side preview, export) — packaged .vsix",
+    "Docs (landing + 17 guide pages) and playground built with VhyxUI; playground publishes a VhyxSeal manifest"
+  ],
+  "tests_added": {
+    "core": 65,
+    "react": 5,
+    "cli": 6,
+    "examples": 9,
+    "vscode": 4,
+    "total": 89
+  },
+  "commands_executed": [
+    "pnpm install",
+    "pnpm build (turbo)",
+    "pnpm test",
+    "pnpm typecheck",
+    "next build (docs export, playground)",
+    "vsce package",
+    "Playwright (Chromium) checks: player playback/step/scenario, markdown preview script, docs and playground screenshots"
+  ],
+  "validation_results": {
+    "build": "pass",
+    "tests": "89/89",
+    "typecheck": "pass",
+    "vsix": "vhyxchart-vscode-0.1.0.vsix (101.8 KB)",
+    "browser_console_errors": "none (favicon 404 only)"
+  },
+  "invariants": "I-001..I-008 preserved and tested (determinism, immutability, value identity, renderer blindness)",
+  "known_limitations": [
+    "No syntax-highlighted editor in the playground yet",
+    "Dense graphs can place a non-member node inside a group box",
+    "Nothing published; push blocked by GitHub access"
+  ],
+  "unexpected_findings": [
+    "Parallel edges between the same pair overlapped (fixed with fan-out)",
+    "Shared shape openers ([/ …) needed nearest-closer disambiguation",
+    "Stale shell-expanded commit message amended"
+  ],
+  "open_questions_blockers": [
+    "Owner to publish packages and extension (notes.md)",
+    "Owner to restore GitHub App access for push"
+  ],
+  "resolved_from_previous_entries": {
+    "F8": "resolved upstream — @vhyxseal/core rc.3 exports and browser-safe crypto; VhyxChart no longer depends on @vhyxui/visual-runtime or @vhyxui/core"
+  }
+}
+```
