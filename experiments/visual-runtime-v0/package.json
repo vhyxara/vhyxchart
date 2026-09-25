@@ -1,0 +1,22 @@
+{
+  "name": "vhyxchart-verification-harness",
+  "private": true,
+  "type": "module",
+  "description": "Local verification harness: consumes @vhyxui/visual-runtime as a real external npm dependency (packed tarball), not a workspace link.",
+  "scripts": {
+    "demo:bubble-sort": "tsx demos/bubble-sort.ts",
+    "demo:selection-sort": "tsx demos/selection-sort.ts",
+    "demo:insertion-sort": "tsx demos/insertion-sort.ts",
+    "demo:merge-sort": "tsx demos/merge-sort.ts",
+    "demo:graph-traversal": "tsx demos/graph-traversal.ts",
+    "demo:system-flow": "tsx demos/system-flow.ts"
+  },
+  "dependencies": {
+    "@vhyxui/visual-runtime": "file:./vhyxui-visual-runtime-0.1.0-alpha.1.tgz",
+    "@vhyxui/core": "0.1.3-alpha"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.4.0"
+  }
+}
