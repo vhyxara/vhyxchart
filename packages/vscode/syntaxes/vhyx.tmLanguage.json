@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "VhyxChart",
+  "scopeName": "source.vhyx",
+  "patterns": [
+    { "include": "#frontmatter" },
+    { "include": "#comment" },
+    { "include": "#header" },
+    { "include": "#keyword" },
+    { "include": "#state" },
+    { "include": "#string" },
+    { "include": "#label" },
+    { "include": "#arrow" },
+    { "include": "#shape" },
+    { "include": "#class" },
+    { "include": "#number" }
+  ],
+  "repository": {
+    "frontmatter": {
+      "begin": "\\A---\\s*$", "end": "^---\\s*$",
+      "beginCaptures": { "0": { "name": "punctuation.definition.tag.vhyx" } },
+      "endCaptures": { "0": { "name": "punctuation.definition.tag.vhyx" } },
+      "patterns": [{ "match": "^\\s*([\\w-]+)\\s*(:)", "captures": { "1": { "name": "entity.name.tag.yaml" }, "2": { "name": "punctuation.separator.key-value" } } }]
+    },
+    "comment": { "patterns": [
+      { "match": "%%.*$", "name": "comment.line.percentage.vhyx" },
+      { "match": "^\\s*(#|//).*$", "name": "comment.line.number-sign.vhyx" }
+    ] },
+    "header": { "match": "^\\s*(flowchart|graph|flow|architecture|arch|stateDiagram-v2|stateDiagram|state|sequenceDiagram|sequence|array|algorithm)\\b\\s*(TB|TD|BT|LR|RL)?", "captures": { "1": { "name": "keyword.control.diagram.vhyx" }, "2": { "name": "constant.language.direction.vhyx" } } },
+    "keyword": { "patterns": [
+      { "match": "^\\s*(subgraph|end|direction|classDef|class|style|click|linkStyle|title|autonumber|participant|actor|database|queue|activate|deactivate|loop|alt|else|opt|par|and|critical|break|rect|note|Note)\\b", "name": "keyword.other.vhyx" },
+      { "match": "^\\s*(scenario|play|story|together|parallel|reset|wait|pause|caption|say|highlight|pulse|values|compare|swap|set|mark|unmark|pointer)\\b", "name": "keyword.control.scenario.vhyx" },
+      { "match": "\\b(left of|right of|over|as)\\b", "name": "keyword.operator.word.vhyx" }
+    ] },
+    "state": { "match": "\\b(is|are)\\s+(idle|pending|active|running|processing|done|success|ok|sorted|error|failed|down|warn|warning|degraded|skipped)\\b", "captures": { "1": { "name": "keyword.operator.word.vhyx" }, "2": { "name": "constant.language.state.vhyx" } } },
+    "string": { "match": "\"(?:[^\"\\\\]|\\\\.)*\"", "name": "string.quoted.double.vhyx" },
+    "label": { "patterns": [
+      { "match": "\\|[^|]*\\|", "name": "string.unquoted.edge-label.vhyx" },
+      { "match": "(:)\\s*([^:].*)$", "captures": { "1": { "name": "punctuation.separator.vhyx" }, "2": { "name": "string.unquoted.label.vhyx" } } }
+    ] },
+    "arrow": { "match": "<?(-{2,}>|-{3,}|={2,}>|={3,}|-\\.+->|-\\.+-|~{3,}|--[ox]|-->>|->>|--x|-x|--\\)|-\\)|-->|->|=>|~>)", "name": "keyword.operator.arrow.vhyx" },
+    "shape": { "match": "(\\(\\(\\(|\\)\\)\\)|\\(\\(|\\)\\)|\\(\\[|\\]\\)|\\[\\(|\\)\\]|\\[\\[|\\]\\]|\\{\\{|\\}\\}|\\[/|/\\]|\\[\\\\|\\\\\\]|[\\[\\](){}>])", "name": "punctuation.definition.shape.vhyx" },
+    "class": { "match": ":::[\\w-]+", "name": "entity.other.attribute-name.class.vhyx" },
+    "number": { "match": "\\b\\d+(\\.\\d+)?(ms|s)?\\b", "name": "constant.numeric.vhyx" }
+  }
+}

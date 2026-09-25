@@ -1,0 +1,44 @@
+{
+  "Flowchart with scenario": {
+    "prefix": ["flow", "flowchart"],
+    "body": [
+      "flowchart ${1|LR,TB,RL,BT|}",
+      "  ${2:client}([${3:Client}]) --> ${4:api}[${5:API}]",
+      "  ${4:api} --> ${6:db}[(${7:Database})]",
+      "",
+      "scenario ${8:Request}",
+      "  ${2:client} -> ${4:api} : ${9:GET /items}",
+      "  ${4:api} is active",
+      "  ${4:api} -> ${6:db}",
+      "  ${6:db} is done",
+      "  ${4:api} -> ${2:client} : 200",
+      "  ${4:api} is done",
+      "$0"
+    ],
+    "description": "Flowchart with an animated scenario"
+  },
+  "Sequence diagram": {
+    "prefix": ["seq", "sequence"],
+    "body": [
+      "sequenceDiagram",
+      "  autonumber",
+      "  participant ${1:A} as ${2:Browser}",
+      "  participant ${3:B} as ${4:API}",
+      "  ${1:A}->>+${3:B}: ${5:request}",
+      "  ${3:B}-->>-${1:A}: ${6:response}",
+      "$0"
+    ],
+    "description": "Animated sequence diagram"
+  },
+  "Array algorithm": {
+    "prefix": ["array", "algo"],
+    "body": ["array ${1:Bubble sort}", "  values ${2:5 3 8 1}", "  compare 0 1", "  swap 0 1", "  mark 3 sorted", "$0"],
+    "description": "Animated array / algorithm trace"
+  },
+  "Scenario block": {
+    "prefix": "scenario",
+    "body": ["scenario ${1:Name}", "  ${2:a} -> ${3:b} : ${4:label}", "  ${3:b} is ${5|active,done,error,warn|}", "$0"],
+    "description": "Scenario: tokens travel, states change"
+  },
+  "Subgraph": { "prefix": "subgraph", "body": ["subgraph ${1:id} [${2:Label}]", "  $0", "end"] }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@vhyxchart/react",
+  "version": "0.1.0-alpha",
+  "description": "React components for VhyxChart — animated diagrams from text. <VhyxChart>, a headless hook for custom controls, and a server-renderable <VhyxChartStatic>.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "require": "./dist/index.js", "default": "./dist/index.js" },
+    "./static": { "types": "./dist/static.d.ts", "import": "./dist/static.js", "default": "./dist/static.js" }
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@vhyxchart/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jsdom": "^25.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
