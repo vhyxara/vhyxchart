@@ -8,3 +8,6 @@ out/
 *.tsbuildinfo
 *.vsix
 coverage/
+
+# Local notes
+/internal-tools/
