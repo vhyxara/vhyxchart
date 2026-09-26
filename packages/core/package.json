@@ -1,8 +1,30 @@
 {
   "name": "@vhyxchart/core",
   "version": "0.1.0-alpha",
-  "description": "VhyxChart engine \u2014 parse Markdown-friendly diagram text, lay it out, and render animated SVG. Zero dependencies, works in Node and the browser.",
+  "description": "VhyxChart engine — parse Markdown-friendly diagram text, lay it out, and render animated SVG. Zero dependencies, works in Node and the browser.",
+  "keywords": [
+    "vhyxchart",
+    "vhyxara",
+    "diagram",
+    "mermaid",
+    "flowchart",
+    "sequence-diagram",
+    "animation",
+    "svg"
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/vhyxara/vhyxchart#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhyxara/vhyxchart.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/vhyxara/vhyxchart/issues"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

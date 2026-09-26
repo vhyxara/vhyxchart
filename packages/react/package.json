@@ -2,15 +2,46 @@
   "name": "@vhyxchart/react",
   "version": "0.1.0-alpha",
   "description": "React components for VhyxChart — animated diagrams from text. <VhyxChart>, a headless hook for custom controls, and a server-renderable <VhyxChartStatic>.",
+  "keywords": [
+    "vhyxchart",
+    "vhyxara",
+    "react",
+    "diagram",
+    "mermaid",
+    "animation"
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/vhyxara/vhyxchart#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhyxara/vhyxchart.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/vhyxara/vhyxchart/issues"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "require": "./dist/index.js", "default": "./dist/index.js" },
-    "./static": { "types": "./dist/static.d.ts", "import": "./dist/static.js", "default": "./dist/static.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./static": {
+      "types": "./dist/static.d.ts",
+      "import": "./dist/static.js",
+      "default": "./dist/static.js"
+    }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",

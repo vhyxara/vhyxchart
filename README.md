@@ -39,8 +39,7 @@ pnpm --filter @vhyxchart/docs dev         # http://localhost:3100
 pnpm --filter vhyxchart-vscode package    # builds a .vsix
 ```
 
-Sibling libraries (VhyxUI, VhyxSeal) are consumed as local tarballs in
-`.tarballs/` — refresh them with `scripts/sync-siblings.sh`. See
-`internal-tools/` for context, architecture, decisions and release notes.
+Requires Node.js 20.19 or newer. The docs and playground use the published
+VhyxUI and VhyxSeal packages from npm.
 
 The original visual-runtime experiments are preserved in `experiments/`.
