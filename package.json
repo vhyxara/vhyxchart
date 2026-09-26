@@ -3,7 +3,7 @@
   "private": true,
   "description": "VhyxChart — diagrams that move. Write Markdown-friendly text, get animated architecture, flow, sequence and algorithm diagrams.",
   "engines": {
-    "node": ">=18"
+    "node": ">=20.19"
   },
   "packageManager": "pnpm@9.0.0",
   "scripts": {
@@ -17,15 +17,5 @@
     "turbo": "^2.0.0",
     "typescript": "^5.4.0",
     "vitest": "^2.0.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "@vhyxseal/core": "file:.tarballs/vhyxseal-core-1.0.0-rc.3.tgz",
-      "@vhyxseal/react": "file:.tarballs/vhyxseal-react-1.0.0-rc.3.tgz",
-      "@vhyxui/core": "file:.tarballs/vhyxui-core-0.2.0-alpha.tgz",
-      "@vhyxui/react": "file:.tarballs/vhyxui-react-0.4.0-alpha.tgz",
-      "@vhyxui/tokens": "file:.tarballs/vhyxui-tokens-0.2.0-alpha.tgz",
-      "@vhyxui/blocks": "file:.tarballs/vhyxui-blocks-0.1.0-alpha.tgz"
-    }
   }
 }
