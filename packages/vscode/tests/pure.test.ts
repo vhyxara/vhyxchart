@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import MarkdownIt from 'markdown-it';
 import { vhyxMarkdownIt, documentDiagnostics, type MarkdownItLike } from '../src/pure.js';
 
-const opts = { mermaid: false, theme: 'auto' as const, autoplay: true };
+const opts = { compatibleFences: false, theme: 'auto' as const, autoplay: true };
 
 describe('markdown-it plugin', () => {
   it('replaces vhyx fences with escaped placeholders and leaves others alone', () => {
@@ -13,8 +13,8 @@ describe('markdown-it plugin', () => {
     expect(html).toContain('language-mermaid');
   });
 
-  it('optionally takes over mermaid fences', () => {
-    const md = vhyxMarkdownIt(new MarkdownIt() as unknown as MarkdownItLike, () => ({ ...opts, mermaid: true })) as unknown as MarkdownIt;
+  it('optionally renders compatible diagram fences', () => {
+    const md = vhyxMarkdownIt(new MarkdownIt() as unknown as MarkdownItLike, () => ({ ...opts, compatibleFences: true })) as unknown as MarkdownIt;
     expect(md.render('```mermaid\ngraph TD\n A-->B\n```\n')).toContain('class="vhyxchart"');
   });
 });

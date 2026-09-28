@@ -146,7 +146,7 @@ describe('markdown', () => {
   it('extracts fences with line numbers', () => {
     const blocks = extractBlocks(md);
     expect(blocks.map((b) => [b.lang, b.line])).toEqual([['vhyx', 3], ['vhyxchart', 10]]);
-    expect(extractBlocks(md, { mermaid: true })).toHaveLength(3);
+    expect(extractBlocks(md, { compatibleFences: true })).toHaveLength(3);
   });
 
   it('replaces fences with inline SVG or asset links', () => {

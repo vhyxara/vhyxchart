@@ -6,7 +6,7 @@ function options(): FenceOptions {
   const c = vscode.workspace.getConfiguration('vhyxchart');
   const theme = c.get<string>('theme', 'auto');
   return {
-    mermaid: c.get<boolean>('renderMermaidFences', false),
+    compatibleFences: c.get<boolean>('renderCompatibleFences', false),
     theme: theme === 'light' || theme === 'dark' ? theme : 'auto',
     autoplay: c.get<boolean>('autoplay', true),
   };
@@ -60,7 +60,7 @@ vscodeApi.postMessage({ type: 'ready' });
       existing.panel.reveal(vscode.ViewColumn.Beside, true);
       return;
     }
-    const panel = vscode.window.createWebviewPanel('vhyxchart.preview', `▶ ${document.fileName.split(/[\\/]/).pop() ?? 'Diagram'}`, { viewColumn: vscode.ViewColumn.Beside, preserveFocus: true }, {
+    const panel = vscode.window.createWebviewPanel('vhyxchart.preview', `VhyxChart: ${document.fileName.split(/[\\/]/).pop() ?? 'Diagram'}`, { viewColumn: vscode.ViewColumn.Beside, preserveFocus: true }, {
       enableScripts: true,
       localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'dist')],
       retainContextWhenHidden: true,

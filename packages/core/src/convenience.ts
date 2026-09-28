@@ -16,7 +16,7 @@ export interface RenderResult {
 
 /**
  * One call from text to SVG.
- * @param source - VhyxChart / Mermaid-compatible source.
+ * @param source - VhyxChart diagram source.
  * @param options - `animated: true` produces a SMIL animated SVG (works in `<img>` and GitHub).
  * @example
  * const { svg } = render('flowchart LR\n  A --> B', { animated: true });
@@ -32,7 +32,7 @@ export function render(source: string, options: RenderOptions & { animated?: boo
 
 /** A fenced diagram block found in Markdown. */
 export interface MarkdownBlock {
-  /** Language tag: vhyx, vhyxchart or mermaid. */
+  /** Language tag of the fence (vhyx, vhyxchart, or a compatible diagram tag). */
   lang: string;
   source: string;
   /** Character offsets of the whole fence in the document. */
@@ -45,16 +45,16 @@ export interface MarkdownBlock {
 const FENCE = /^([ \t]*)(`{3,}|~{3,})[ \t]*(vhyx|vhyxchart|mermaid)\b[^\n]*\n([\s\S]*?)^\1\2[ \t]*$/gm;
 
 /**
- * Finds ```vhyx / ```vhyxchart (and optionally ```mermaid) fences.
+ * Finds ```vhyx / ```vhyxchart fences (and, with `compatibleFences`, compatible diagram fences).
  * @example
  * extractBlocks(readme).map((b) => b.source)
  */
-export function extractBlocks(markdown: string, options: { mermaid?: boolean } = {}): MarkdownBlock[] {
+export function extractBlocks(markdown: string, options: { compatibleFences?: boolean } = {}): MarkdownBlock[] {
   const out: MarkdownBlock[] = [];
   FENCE.lastIndex = 0;
   for (let m = FENCE.exec(markdown); m; m = FENCE.exec(markdown)) {
     const lang = (m[3] ?? '').toLowerCase();
-    if (lang === 'mermaid' && !options.mermaid) continue;
+    if (lang === 'mermaid' && !options.compatibleFences) continue;
     out.push({
       lang,
       source: m[4] ?? '',
@@ -78,7 +78,7 @@ export function extractBlocks(markdown: string, options: { mermaid?: boolean } =
  */
 export function renderMarkdown(
   markdown: string,
-  options: { mermaid?: boolean; theme?: 'auto' | 'light' | 'dark'; asset?: (svg: string, index: number, block: MarkdownBlock) => string } = {},
+  options: { compatibleFences?: boolean; theme?: 'auto' | 'light' | 'dark'; asset?: (svg: string, index: number, block: MarkdownBlock) => string } = {},
 ): string {
   const blocks = extractBlocks(markdown, options);
   let out = '';

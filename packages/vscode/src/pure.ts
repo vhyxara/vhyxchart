@@ -13,7 +13,7 @@ export interface MarkdownItLike {
 
 /** Options read from `vhyxchart.*` settings. */
 export interface FenceOptions {
-  mermaid: boolean;
+  compatibleFences: boolean;
   theme: 'auto' | 'light' | 'dark';
   autoplay: boolean;
 }
@@ -30,7 +30,7 @@ export function vhyxMarkdownIt<T extends MarkdownItLike>(md: T, getOptions: () =
     const token = tokens[idx];
     const lang = (token?.info ?? '').trim().split(/\s+/)[0]?.toLowerCase() ?? '';
     const opts = getOptions();
-    if (token && (LANGS.has(lang) || (opts.mermaid && lang === 'mermaid'))) {
+    if (token && (LANGS.has(lang) || (opts.compatibleFences && lang === 'mermaid'))) {
       const source = md.utils.escapeHtml(token.content);
       return `<div class="vhyxchart" data-theme="${opts.theme}" data-autoplay="${opts.autoplay}" data-source="${source}">${source}</div>\n`;
     }
