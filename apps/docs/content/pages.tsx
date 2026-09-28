@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckIcon, XIcon } from '@vhyxui/icons';
 import { EXAMPLES } from '@vhyxchart/examples';
 import { Code, Example, PLAYGROUND } from '../components/ui';
 
@@ -23,7 +24,7 @@ scenario Save a profile
   db is done
   api -> app : 200
   api is done
-  note app : Saved ✓`;
+  note app : Saved`;
 
 export const PAGES: DocPage[] = [
   {
@@ -70,12 +71,12 @@ pnpm add -D @vhyxchart/cli       # render .vhyx / README.md to animated SVG`}</C
         <table className="cmp">
           <thead><tr><th /><th>VhyxChart</th><th>Mermaid</th><th>D2 / PlantUML</th><th>Hand-made animation</th></tr></thead>
           <tbody>
-            <tr><td>Text source, diff-able</td><td>✓</td><td>✓</td><td>✓</td><td>✗</td></tr>
-            <tr><td>Automatic layout</td><td>✓</td><td>✓</td><td>✓</td><td>✗</td></tr>
-            <tr><td>Animated scenarios, many per diagram</td><td>✓</td><td>✗</td><td>✗</td><td>one per file</td></tr>
-            <tr><td>Play / pause / step / scrub</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td></tr>
-            <tr><td>Animated SVG that plays on GitHub</td><td>✓</td><td>✗</td><td>✗</td><td>GIF</td></tr>
-            <tr><td>Line-accurate errors with fixes</td><td>✓</td><td>partial</td><td>partial</td><td>—</td></tr>
+            <tr><td>Text source, diff-able</td><td><CheckIcon title="Yes" /></td><td><CheckIcon title="Yes" /></td><td><CheckIcon title="Yes" /></td><td><XIcon title="No" /></td></tr>
+            <tr><td>Automatic layout</td><td><CheckIcon title="Yes" /></td><td><CheckIcon title="Yes" /></td><td><CheckIcon title="Yes" /></td><td><XIcon title="No" /></td></tr>
+            <tr><td>Animated scenarios, many per diagram</td><td><CheckIcon title="Yes" /></td><td><XIcon title="No" /></td><td><XIcon title="No" /></td><td>one per file</td></tr>
+            <tr><td>Play / pause / step / scrub</td><td><CheckIcon title="Yes" /></td><td><XIcon title="No" /></td><td><XIcon title="No" /></td><td><XIcon title="No" /></td></tr>
+            <tr><td>Animated SVG that plays on GitHub</td><td><CheckIcon title="Yes" /></td><td><XIcon title="No" /></td><td><XIcon title="No" /></td><td>GIF</td></tr>
+            <tr><td>Line-accurate errors with fixes</td><td><CheckIcon title="Yes" /></td><td>partial</td><td>partial</td><td>—</td></tr>
             <tr><td>Size (browser bundle, gzip)</td><td>~30 KB</td><td>hundreds of KB</td><td>server-side</td><td>—</td></tr>
           </tbody>
         </table>
@@ -108,7 +109,7 @@ pnpm add -D @vhyxchart/cli       # render .vhyx / README.md to animated SVG`}</C
   C -->|Two| E[iPhone]
 
 scenario Decide
-  A -> B : 💰
+  A -> B : payment
   B -> C
   C is active
   wait 600ms

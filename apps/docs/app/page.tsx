@@ -1,5 +1,6 @@
 'use client';
 
+import { CirclePlayIcon, FeatherIcon, GitBranchIcon, LaptopIcon, PlayIcon, PuzzleIcon } from '@vhyxui/icons';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { VhyxChart } from '@vhyxchart/react';
@@ -68,12 +69,12 @@ export default function Home(): React.ReactElement {
           title="Text in, motion out"
           description="Familiar diagram syntax, plus a timeline."
           features={[
-            { icon: '▶', title: 'Scenarios', description: 'Tokens travel edges, nodes change state, notes appear. Many scenarios per diagram, one layout.' },
-            { icon: '⏯', title: 'Play, step, scrub', description: 'Every frame is a pure function of time — scrubbing backwards is exact.' },
-            { icon: '🐙', title: 'Animated on GitHub', description: 'Export SMIL-animated SVG that plays inside README images. No JavaScript.' },
-            { icon: '🧩', title: 'Bring existing diagrams', description: 'Flowcharts, sequence and state diagrams you already have render unchanged.' },
-            { icon: '💻', title: 'VS Code live preview', description: 'Fences animate in the Markdown preview; .vhyx files preview as you type.' },
-            { icon: '🪶', title: 'Tiny and deterministic', description: '~30 KB gzipped, zero dependencies, same output in Node and the browser.' },
+            { icon: <PlayIcon />, title: 'Scenarios', description: 'Tokens travel edges, nodes change state, notes appear. Many scenarios per diagram, one layout.' },
+            { icon: <CirclePlayIcon />, title: 'Play, step, scrub', description: 'Every frame is a pure function of time — scrubbing backwards is exact.' },
+            { icon: <GitBranchIcon />, title: 'Animated on GitHub', description: 'Export SMIL-animated SVG that plays inside README images. No JavaScript.' },
+            { icon: <PuzzleIcon />, title: 'Bring existing diagrams', description: 'Flowcharts, sequence and state diagrams you already have render unchanged.' },
+            { icon: <LaptopIcon />, title: 'VS Code live preview', description: 'Fences animate in the Markdown preview; .vhyx files preview as you type.' },
+            { icon: <FeatherIcon />, title: 'Tiny and deterministic', description: '~30 KB gzipped, zero dependencies, same output in Node and the browser.' },
           ]}
         />
         <CTASection title="Make your next diagram move" description="Paste an existing flowchart into the playground and add a scenario." actions={[{ label: 'Open playground', href: PLAYGROUND }, { label: 'Read the docs', href: '/docs/getting-started', variant: 'outline' }]} linkAs={Link} />

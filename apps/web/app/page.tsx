@@ -1,5 +1,6 @@
 'use client';
 
+import { CirclePlayIcon, FeatherIcon, GitBranchIcon, LifeBuoyIcon, PlayIcon, PuzzleIcon } from '@vhyxui/icons';
 import React, { useState } from 'react';
 import { VhyxChart } from '@vhyxchart/react';
 import { EXAMPLES } from '@vhyxchart/examples';
@@ -145,12 +146,12 @@ export default function Home() {
         <FeatureGrid
           title="Built for real documentation"
           features={[
-            { icon: '▶', title: 'Scenarios', description: 'Many stories on one layout. Switch between success, failure and edge cases.' },
-            { icon: '⏯', title: 'Play, step, scrub', description: 'Keyboard controls, reduced-motion support, pauses when off-screen.' },
-            { icon: '🐙', title: 'Animated on GitHub', description: 'SMIL-animated SVG plays inside README images — no JavaScript, no GIFs.' },
-            { icon: '🧩', title: 'Bring existing diagrams', description: 'Flowcharts, sequence and state diagrams you already have render unchanged.' },
-            { icon: '🩺', title: 'Helpful errors', description: 'Invalid text never crashes: you get the line, the problem and a suggestion.' },
-            { icon: '🪶', title: 'Tiny and deterministic', description: '~30 KB gzipped, zero dependencies, identical output in Node and the browser.' },
+            { icon: <PlayIcon />, title: 'Scenarios', description: 'Many stories on one layout. Switch between success, failure and edge cases.' },
+            { icon: <CirclePlayIcon />, title: 'Play, step, scrub', description: 'Keyboard controls, reduced-motion support, pauses when off-screen.' },
+            { icon: <GitBranchIcon />, title: 'Animated on GitHub', description: 'SMIL-animated SVG plays inside README images — no JavaScript, no GIFs.' },
+            { icon: <PuzzleIcon />, title: 'Bring existing diagrams', description: 'Flowcharts, sequence and state diagrams you already have render unchanged.' },
+            { icon: <LifeBuoyIcon />, title: 'Helpful errors', description: 'Invalid text never crashes: you get the line, the problem and a suggestion.' },
+            { icon: <FeatherIcon />, title: 'Tiny and deterministic', description: '~30 KB gzipped, zero dependencies, identical output in Node and the browser.' },
           ]}
         />
 
