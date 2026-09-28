@@ -1,7 +1,7 @@
 # VhyxChart — diagrams that move
 
 Write architecture, flows, sequences and algorithms as Markdown-friendly text
-(Mermaid-compatible). Add a `scenario` and the diagram comes alive: requests
+(familiar flowchart and sequence syntax). Add a `scenario` and the diagram comes alive: requests
 travel along edges, services change state, notes appear, values sort. Play,
 pause, step and scrub like a video — in docs sites, VS Code, React, plain HTML,
 and GitHub READMEs (as animated SVG).
@@ -41,5 +41,3 @@ pnpm --filter vhyxchart-vscode package    # builds a .vsix
 
 Requires Node.js 20.19 or newer. The docs and playground use the published
 VhyxUI and VhyxSeal packages from npm.
-
-The original visual-runtime experiments are preserved in `experiments/`.

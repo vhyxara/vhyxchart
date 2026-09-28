@@ -201,7 +201,7 @@ scenario order.created
     id: 'order-states',
     title: 'Order lifecycle',
     category: 'State',
-    description: 'Mermaid stateDiagram syntax, animated.',
+    description: 'State diagram syntax, animated.',
     source: `stateDiagram-v2
   [*] --> Pending
   Pending --> Paid : pay
