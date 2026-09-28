@@ -20,6 +20,11 @@ scenario Request
   api is done
 ```
 
+## Install
+
+- **Cursor, VSCodium, Windsurf:** search for **VhyxChart** in the Extensions view, or see [Open VSX](https://open-vsx.org/extension/vhyxara/vhyxchart-vscode).
+- **VS Code:** download the [.vsix](https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.0/file/vhyxara.vhyxchart-vscode-0.1.0.vsix) and run **Extensions: Install from VSIX…**.
+
 ## Settings
 
 | Setting | Default | |
