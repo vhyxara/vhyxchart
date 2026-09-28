@@ -1,12 +1,11 @@
 {
   "name": "@vhyxchart/core",
-  "version": "0.1.0-alpha",
+  "version": "0.1.1",
   "description": "VhyxChart engine — parse Markdown-friendly diagram text, lay it out, and render animated SVG. Zero dependencies, works in Node and the browser.",
   "keywords": [
     "vhyxchart",
     "vhyxara",
     "diagram",
-    "mermaid",
     "flowchart",
     "sequence-diagram",
     "animation",

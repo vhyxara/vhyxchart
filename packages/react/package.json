@@ -1,13 +1,12 @@
 {
   "name": "@vhyxchart/react",
-  "version": "0.1.0-alpha",
+  "version": "0.1.1",
   "description": "React components for VhyxChart — animated diagrams from text. <VhyxChart>, a headless hook for custom controls, and a server-renderable <VhyxChartStatic>.",
   "keywords": [
     "vhyxchart",
     "vhyxara",
     "react",
     "diagram",
-    "mermaid",
     "animation"
   ],
   "license": "MIT",
