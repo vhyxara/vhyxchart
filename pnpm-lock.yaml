@@ -33,17 +33,17 @@ importers:
         specifier: workspace:*
         version: link:../../packages/react
       '@vhyxseal/core':
-        specifier: 1.0.0-rc.3
-        version: 1.0.0-rc.3
+        specifier: 1.0.0-rc.4
+        version: 1.0.0-rc.4
       '@vhyxui/blocks':
-        specifier: 0.1.0-alpha
-        version: 0.1.0-alpha(@vhyxui/react@0.4.0-alpha(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.1.1
+        version: 0.1.1(@vhyxui/react@0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/core':
-        specifier: 0.2.0-alpha
-        version: 0.2.0-alpha(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.2.1
+        version: 0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/react':
-        specifier: 0.4.0-alpha
-        version: 0.4.0-alpha(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.4.1
+        version: 0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/tokens':
         specifier: 0.2.0-alpha
         version: 0.2.0-alpha
@@ -82,17 +82,17 @@ importers:
         specifier: workspace:*
         version: link:../../packages/react
       '@vhyxseal/core':
-        specifier: 1.0.0-rc.3
-        version: 1.0.0-rc.3
+        specifier: 1.0.0-rc.4
+        version: 1.0.0-rc.4
       '@vhyxui/blocks':
-        specifier: 0.1.0-alpha
-        version: 0.1.0-alpha(@vhyxui/react@0.4.0-alpha(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.1.1
+        version: 0.1.1(@vhyxui/react@0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/core':
-        specifier: 0.2.0-alpha
-        version: 0.2.0-alpha(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.2.1
+        version: 0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/react':
-        specifier: 0.4.0-alpha
-        version: 0.4.0-alpha(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.4.1
+        version: 0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/tokens':
         specifier: 0.2.0-alpha
         version: 0.2.0-alpha
@@ -931,33 +931,33 @@ packages:
   '@types/vscode@1.85.0':
     resolution: {integrity: sha512-CF/RBon/GXwdfmnjZj0WTUMZN5H6YITOfBCP4iEZlOtVQXuzw6t7Le7+cR+7JzdMrnlm7Mfp49Oj2TuSXIWo3g==}
 
-  '@vhyxseal/core@1.0.0-rc.3':
-    resolution: {integrity: sha512-3+6Tr6LZUfwLOl2z5NIWxEnIa6plbhsK3d+Pij/CZ+4eKdaaK337uAq2gyEyE2b+LyKNW31JsI28IenlwlpT8Q==}
+  '@vhyxseal/core@1.0.0-rc.4':
+    resolution: {integrity: sha512-Igw/UjCDBJfDunrI1jgJZEbaOHyfO+ZNvQpGJBMKNoTMKgl9AqLblBzkNZ7UFpy1G34wwb5urV5FB3USJVW70A==}
     engines: {node: '>=20.19'}
 
-  '@vhyxseal/react@1.0.0-rc.3':
-    resolution: {integrity: sha512-0QsvB5uuEJfmMcWlmmMyLngS9/4JsfvmJO/DTGIGvnscCn2vEXkF3p20NFMveRd1sU6tCjC/P9uNVJv1UFi8Og==}
+  '@vhyxseal/react@1.0.0-rc.4':
+    resolution: {integrity: sha512-7AaWqbo0OzY96I8wopxLjeYmuwKesYYGMQDmbv457En1a6pJP4xheD/v8vchBbwmcsI0S91GYslEbGEl+6/lQg==}
     engines: {node: '>=20.19'}
     peerDependencies:
       react: '>=18.0.0'
 
-  '@vhyxui/blocks@0.1.0-alpha':
-    resolution: {integrity: sha512-cFwoBolEohYgH0xo/fZWXaB7LTTea1EAV6NIntopTBK+FEWCD3A+RtKGUrA/Q49ena4SG36d4mq34vygrdjcEQ==}
+  '@vhyxui/blocks@0.1.1':
+    resolution: {integrity: sha512-TnVLl+Yrh8Bs8YVqirzbTgcnuKd+9khJTb9zjxNt1kqL5oJYwSCSMeEcFcTAK3MdlzOfvso2b1y/NrJWwsCdVg==}
     engines: {node: '>=20.19'}
     peerDependencies:
-      '@vhyxui/react': '>=0.4.0-alpha'
+      '@vhyxui/react': ^0.4.1
       react: '>=18'
       react-dom: '>=18'
 
-  '@vhyxui/core@0.2.0-alpha':
-    resolution: {integrity: sha512-GTQen0qAPcAe+5kkpS+Kq+KFHaVq0hSijonco5fl09/hC6Ch3OEmiMXIe7GAKfPj1hoBd1iU9tcZX1Wdfr9jKw==}
+  '@vhyxui/core@0.2.1':
+    resolution: {integrity: sha512-kWmZf8IBXgHYQA27nopgfA+1hI9FpJyO0Ozq00/VYiyCMJLO50MJDHBenS0CPhS2f1n5v8sqzFtHdCejLf5ycg==}
     engines: {node: '>=20.19'}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
 
-  '@vhyxui/react@0.4.0-alpha':
-    resolution: {integrity: sha512-wUimR4+vRIpxnG3eA3BfeTMsWUwr0d79CsGBqqY0vcDqcbFduq5GVhix0blRpxuS1POLOnoZR6yRk5FGwsJNVQ==}
+  '@vhyxui/react@0.4.1':
+    resolution: {integrity: sha512-rywDMKMUzhzTF0Dw0gJZlK8Tm/ncXhioe1jhhnH1/Rp6rGmHKiv6oLmMOatfYATAxsVjN2AjthokvHeVMqlaFA==}
     engines: {node: '>=20.19'}
     peerDependencies:
       '@testing-library/react': '>=14'
@@ -2016,29 +2016,29 @@ snapshots:
 
   '@types/vscode@1.85.0': {}
 
-  '@vhyxseal/core@1.0.0-rc.3': {}
+  '@vhyxseal/core@1.0.0-rc.4': {}
 
-  '@vhyxseal/react@1.0.0-rc.3(react@19.3.0)':
+  '@vhyxseal/react@1.0.0-rc.4(react@19.3.0)':
     dependencies:
-      '@vhyxseal/core': 1.0.0-rc.3
+      '@vhyxseal/core': 1.0.0-rc.4
       react: 19.3.0
 
-  '@vhyxui/blocks@0.1.0-alpha(@vhyxui/react@0.4.0-alpha(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@vhyxui/blocks@0.1.1(@vhyxui/react@0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
-      '@vhyxui/react': 0.4.0-alpha(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
-
-  '@vhyxui/core@0.2.0-alpha(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
-    dependencies:
-      '@vhyxseal/core': 1.0.0-rc.3
+      '@vhyxui/react': 0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
 
-  '@vhyxui/react@0.4.0-alpha(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@vhyxui/core@0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
-      '@vhyxseal/react': 1.0.0-rc.3(react@19.3.0)
-      '@vhyxui/core': 0.2.0-alpha(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@vhyxseal/core': 1.0.0-rc.4
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+
+  '@vhyxui/react@0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+    dependencies:
+      '@vhyxseal/react': 1.0.0-rc.4(react@19.3.0)
+      '@vhyxui/core': 0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
     optionalDependencies:
