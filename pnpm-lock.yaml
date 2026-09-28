@@ -119,6 +119,55 @@ importers:
         specifier: ^5.4.0
         version: 5.9.3
 
+  apps/web:
+    dependencies:
+      '@vhyxchart/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vhyxchart/examples':
+        specifier: workspace:*
+        version: link:../../packages/examples
+      '@vhyxchart/react':
+        specifier: workspace:*
+        version: link:../../packages/react
+      '@vhyxseal/core':
+        specifier: 1.0.0-rc.4
+        version: 1.0.0-rc.4
+      '@vhyxui/blocks':
+        specifier: 0.1.1
+        version: 0.1.1(@vhyxui/react@0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@vhyxui/core':
+        specifier: 0.2.1
+        version: 0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@vhyxui/react':
+        specifier: 0.4.1
+        version: 0.4.1(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@vhyxui/tokens':
+        specifier: 0.2.0-alpha
+        version: 0.2.0-alpha
+      next:
+        specifier: ^15.0.0
+        version: 15.5.26(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.3.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.3.0(react@19.3.0)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.19.43
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.3.0(@types/react@19.3.0)
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+
   packages/cli:
     dependencies:
       '@vhyxchart/core':
