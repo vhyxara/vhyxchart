@@ -7,6 +7,17 @@ import { compileTimeline, frameAt, type Frame, type Timeline } from './timeline/
 import { hashId, renderDynamic, renderSvg } from './render/svg.js';
 import { renderAnimatedSvg } from './render/animate.js';
 
+/** Player control icons: fixed, trusted SVG markup filled with the button's text colour. */
+const icon = (paths: string): string =>
+  `<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" focusable="false">${paths}</svg>`;
+const ICONS = {
+  restart: icon('<rect x="5" y="5" width="2.5" height="14" rx="1"/><path d="M19 5.5v13a1 1 0 0 1-1.5.86L8.5 12.86a1 1 0 0 1 0-1.72l9-6.5A1 1 0 0 1 19 5.5Z"/>'),
+  back: icon('<path d="M17 5.5v13a1 1 0 0 1-1.5.86L6.5 12.86a1 1 0 0 1 0-1.72l9-6.5A1 1 0 0 1 17 5.5Z"/>'),
+  play: icon('<path d="M7 4.9v14.2a1 1 0 0 0 1.52.85l11.3-7.1a1 1 0 0 0 0-1.7L8.52 4.05A1 1 0 0 0 7 4.9Z"/>'),
+  pause: icon('<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>'),
+  forward: icon('<path d="M5 5.5v13a1 1 0 0 0 1.5.86l9-6.5a1 1 0 0 0 0-1.72l-9-6.5A1 1 0 0 0 5 5.5Z"/><rect x="16.5" y="5" width="2.5" height="14" rx="1"/>'),
+};
+
 /** Options for {@link createPlayer}. */
 export interface PlayerOptions {
   theme?: 'auto' | 'light' | 'dark';
@@ -148,21 +159,21 @@ export function createPlayer(container: HTMLElement, source: string, options: Pl
   root.append(stage, caption, bar, errors);
   container.replaceChildren(root);
 
-  const button = (label: string, title: string, onClick: () => void): HTMLButtonElement => {
+  const button = (icon: string, title: string, onClick: () => void): HTMLButtonElement => {
     const b = doc.createElement('button');
     b.type = 'button';
     b.className = 'vc-btn';
-    b.textContent = label;
+    b.innerHTML = icon;
     b.title = title;
     b.setAttribute('aria-label', title);
     b.addEventListener('click', onClick);
     return b;
   };
-  const restartBtn = button('⏮', 'Restart', () => api.restart());
-  const backBtn = button('◀', 'Previous step', () => api.step(-1));
-  const playBtn = button('▶', 'Play', () => api.toggle());
+  const restartBtn = button(ICONS.restart, 'Restart', () => api.restart());
+  const backBtn = button(ICONS.back, 'Previous step', () => api.step(-1));
+  const playBtn = button(ICONS.play, 'Play', () => api.toggle());
   playBtn.dataset['primary'] = '';
-  const fwdBtn = button('▶|', 'Next step', () => api.step(1));
+  const fwdBtn = button(ICONS.forward, 'Next step', () => api.step(1));
   const range = doc.createElement('input');
   range.type = 'range';
   range.className = 'vc-range';
@@ -310,7 +321,7 @@ export function createPlayer(container: HTMLElement, source: string, options: Pl
           holdUntil = now + 1400;
         } else {
           playing = false;
-          playBtn.textContent = '▶';
+          playBtn.innerHTML = ICONS.play;
           emitState();
         }
       }
@@ -324,7 +335,7 @@ export function createPlayer(container: HTMLElement, source: string, options: Pl
     if (time >= timeline.duration) time = 0;
     playing = true;
     last = 0;
-    playBtn.textContent = '❚❚';
+    playBtn.innerHTML = ICONS.pause;
     playBtn.title = 'Pause';
     playBtn.setAttribute('aria-label', 'Pause');
     raf = win.requestAnimationFrame(tick);
@@ -336,7 +347,7 @@ export function createPlayer(container: HTMLElement, source: string, options: Pl
     holdUntil = 0;
     if (raf && win) win.cancelAnimationFrame(raf);
     raf = 0;
-    playBtn.textContent = '▶';
+    playBtn.innerHTML = ICONS.play;
     playBtn.title = 'Play';
     playBtn.setAttribute('aria-label', 'Play');
     emitState();
