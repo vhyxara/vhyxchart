@@ -1,6 +1,6 @@
 /**
  * Browser entry: interactive player, `<vhyx-chart>` custom element, and
- * Mermaid-style auto rendering of Markdown code fences.
+ * Automatic rendering of Markdown code fences.
  *
  *   <script type="module">
  *     import { autoRender } from '@vhyxchart/core/browser';
@@ -16,15 +16,15 @@ const SELECTOR = 'pre > code.language-vhyx, pre > code.language-vhyxchart, pre.l
 
 /**
  * Finds diagram blocks and mounts players. Handles:
- * - Markdown fences rendered as `<pre><code class="language-vhyx">` (also `vhyxchart`, and `mermaid` when enabled)
+ * - Markdown fences rendered as `<pre><code class="language-vhyx">` (also `vhyxchart`, and compatible diagram fences when `compatibleFences` is set)
  * - `<div class="vhyxchart">source</div>` and `<div class="vhyxchart" data-source="…">`
  *
  * Safe to call repeatedly (already-mounted blocks are skipped).
  * @returns The created players.
  */
-export function autoRender(root: ParentNode = document, options: PlayerOptions & { mermaid?: boolean } = {}): Player[] {
+export function autoRender(root: ParentNode = document, options: PlayerOptions & { compatibleFences?: boolean } = {}): Player[] {
   const players: Player[] = [];
-  const selector = options.mermaid ? `${SELECTOR}, pre > code.language-mermaid` : SELECTOR;
+  const selector = options.compatibleFences ? `${SELECTOR}, pre > code.language-mermaid` : SELECTOR;
   root.querySelectorAll<HTMLElement>(selector).forEach((el) => {
     const host = el.tagName === 'CODE' && el.parentElement ? el.parentElement : el;
     if (host.hasAttribute('data-vc-mounted')) return;

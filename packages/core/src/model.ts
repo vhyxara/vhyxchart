@@ -14,7 +14,7 @@ export type DiagramKind = 'flow' | 'sequence' | 'array';
 /** Layout direction for flow diagrams. */
 export type Direction = 'TB' | 'BT' | 'LR' | 'RL';
 
-/** Node shapes (Mermaid-compatible syntax, see parser). */
+/** Node shapes (see parser for the accepted syntax). */
 export type NodeShape =
   | 'rect'
   | 'round'

@@ -3,10 +3,9 @@
   "displayName": "VhyxChart — animated diagrams",
   "version": "0.1.0",
   "private": true,
-  "description": "Live, animated architecture, flow, sequence and algorithm diagrams in Markdown preview and .vhyx files. Mermaid-compatible syntax with scenarios that move.",
+  "description": "Live, animated architecture, flow, sequence and algorithm diagrams in Markdown preview and .vhyx files. Familiar diagram syntax with scenarios that move.",
   "keywords": [
     "diagram",
-    "mermaid",
     "animation",
     "architecture",
     "markdown",
@@ -132,15 +131,15 @@
           "default": "auto",
           "description": "Diagram theme in previews."
         },
-        "vhyxchart.renderMermaidFences": {
-          "type": "boolean",
-          "default": false,
-          "description": "Also render ```mermaid fences with VhyxChart in the Markdown preview."
-        },
         "vhyxchart.autoplay": {
           "type": "boolean",
           "default": true,
           "description": "Start scenarios automatically in previews."
+        },
+        "vhyxchart.renderCompatibleFences": {
+          "type": "boolean",
+          "default": false,
+          "description": "Also render existing compatible diagram fences (```mermaid) with VhyxChart in the Markdown preview."
         }
       }
     }

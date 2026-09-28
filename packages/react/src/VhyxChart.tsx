@@ -6,7 +6,7 @@ import { useVhyxChart, type VhyxChartState } from './useVhyxChart.js';
 
 /** Props for {@link VhyxChart}. */
 export interface VhyxChartProps extends PlayerOptions {
-  /** Diagram source (VhyxChart or Mermaid-compatible text). Alternatively pass it as children. */
+  /** Diagram source text. Alternatively pass it as children. */
   source?: string;
   children?: string;
   className?: string;
