@@ -4,7 +4,7 @@ export const NAV = [
     items: [
       { label: 'Getting started', href: '/docs/getting-started' },
       { label: 'Why VhyxChart', href: '/docs/why' },
-      { label: 'From Mermaid', href: '/docs/mermaid' },
+      { label: 'Bring existing diagrams', href: '/docs/existing-diagrams' },
     ],
   },
   {

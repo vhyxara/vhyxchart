@@ -28,16 +28,16 @@ export default function Home(): React.ReactElement {
         }}
         footer={{
           brand: 'VhyxChart',
-          tagline: 'Diagrams that move. MIT licensed, part of the Vhyxara family with VhyxUI and VhyxSeal.',
+          tagline: <>Diagrams that move. MIT licensed, part of the <a href="https://vhyxara.com" className="brand-link">Vhyxara</a> family with VhyxUI and VhyxSeal.</>,
           columns: [
             { title: 'Docs', links: [{ label: 'Getting started', href: '/docs/getting-started' }, { label: 'Syntax', href: '/docs/flowchart' }, { label: 'Scenarios', href: '/docs/scenarios' }] },
             { title: 'Use it', links: [{ label: 'Markdown & GitHub', href: '/docs/markdown' }, { label: 'VS Code', href: '/docs/vscode' }, { label: 'React', href: '/docs/react' }] },
           ],
-          legal: '© 2026 Vhyxara',
+          legal: <>© 2026 <a href="https://vhyxara.com" className="brand-link">Vhyxara</a></>,
         }}
       >
         <Hero
-          eyebrow="Mermaid-compatible · 30 KB · animated SVG for GitHub"
+          eyebrow="Text-first · 30 KB · animated SVG for GitHub"
           title="Diagrams that move."
           description="Write architecture, flows, sequences and algorithms as text. Add a scenario and watch requests travel, services fail, and values sort — in docs, READMEs, VS Code and React."
           actions={[{ label: 'Get started', href: '/docs/getting-started' }, { label: 'Open playground', href: PLAYGROUND, variant: 'outline' }]}
@@ -66,17 +66,17 @@ export default function Home(): React.ReactElement {
         </Container>
         <FeatureGrid
           title="Text in, motion out"
-          description="Everything you know from Mermaid, plus a timeline."
+          description="Familiar diagram syntax, plus a timeline."
           features={[
             { icon: '▶', title: 'Scenarios', description: 'Tokens travel edges, nodes change state, notes appear. Many scenarios per diagram, one layout.' },
             { icon: '⏯', title: 'Play, step, scrub', description: 'Every frame is a pure function of time — scrubbing backwards is exact.' },
             { icon: '🐙', title: 'Animated on GitHub', description: 'Export SMIL-animated SVG that plays inside README images. No JavaScript.' },
-            { icon: '🧩', title: 'Mermaid-compatible', description: 'Flowcharts, sequence and state diagrams render unchanged.' },
+            { icon: '🧩', title: 'Bring existing diagrams', description: 'Flowcharts, sequence and state diagrams you already have render unchanged.' },
             { icon: '💻', title: 'VS Code live preview', description: 'Fences animate in the Markdown preview; .vhyx files preview as you type.' },
             { icon: '🪶', title: 'Tiny and deterministic', description: '~30 KB gzipped, zero dependencies, same output in Node and the browser.' },
           ]}
         />
-        <CTASection title="Make your next diagram move" description="Paste a Mermaid diagram into the playground and add a scenario." actions={[{ label: 'Open playground', href: PLAYGROUND }, { label: 'Read the docs', href: '/docs/getting-started', variant: 'outline' }]} linkAs={Link} />
+        <CTASection title="Make your next diagram move" description="Paste an existing flowchart into the playground and add a scenario." actions={[{ label: 'Open playground', href: PLAYGROUND }, { label: 'Read the docs', href: '/docs/getting-started', variant: 'outline' }]} linkAs={Link} />
       </MarketingLayout>
     </VhyxUIProvider>
   );

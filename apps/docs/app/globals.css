@@ -17,3 +17,7 @@ body { margin: 0; background: var(--vhyx-color-bg); color: var(--vhyx-color-text
 .example svg.vc { width: 100%; }
 @media (max-width: 1100px) { .example { grid-template-columns: 1fr; } }
 .cmp td, .cmp th { padding: 8px 12px; border-bottom: 1px solid var(--vhyx-color-border); text-align: left; font-size: var(--vhyx-text-sm); }
+
+/* Brand name links (Vhyxara) read as text: no underline, colour from context. */
+.brand-link { color: inherit; text-decoration: none; }
+.brand-link:hover { color: var(--vhyx-color-accent); }

@@ -1,6 +1,6 @@
 # @vhyxchart/core
 
-Text-to-diagram like Mermaid — but diagrams **move**. Write flowcharts, sequence
+Text-to-diagram — and the diagrams **move**. Write flowcharts, sequence
 diagrams and algorithms as text, add a `scenario`, and requests travel along
 edges, services change state and notes appear. Play, pause, step and scrub like
 a video, or export an animated SVG that plays on GitHub.
@@ -17,7 +17,7 @@ Zero dependencies, about 30 KB gzipped, runs in Node and the browser.
 
 ## Syntax
 
-Structure is Mermaid-compatible; motion is an added `scenario` block.
+Structure uses familiar flowchart and sequence syntax; motion is an added `scenario` block.
 
 ```vhyx
 flowchart LR

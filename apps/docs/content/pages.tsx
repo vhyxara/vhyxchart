@@ -34,12 +34,12 @@ export const PAGES: DocPage[] = [
     body: () => (
       <>
         <h1>Getting started</h1>
-        <p>VhyxChart turns plain text into diagrams that <strong>move</strong>. The structure is Mermaid-compatible; a <code>scenario</code> block adds the story: tokens travel along edges, nodes change state, notes appear. Play, pause, step and scrub like a video.</p>
+        <p>VhyxChart turns plain text into diagrams that <strong>move</strong>. The structure uses familiar flowchart and sequence syntax; a <code>scenario</code> block adds the story: tokens travel along edges, nodes change state, notes appear. Play, pause, step and scrub like a video.</p>
         <h2 id="first">Your first diagram</h2>
         <Example source={FIRST} />
         <p>Three ideas are all you need:</p>
         <ul>
-          <li><strong>Structure</strong> — nodes and edges, exactly like Mermaid: <code>a[Label] --&gt; b[(Database)]</code>.</li>
+          <li><strong>Structure</strong> — nodes and edges: <code>a[Label] --&gt; b[(Database)]</code>.</li>
           <li><strong>Scenario</strong> — <code>a -&gt; b : label</code> sends a token along the edge (either direction).</li>
           <li><strong>State</strong> — <code>api is active | done | error | warn</code> colours a node until changed.</li>
         </ul>
@@ -86,14 +86,14 @@ pnpm add -D @vhyxchart/cli       # render .vhyx / README.md to animated SVG`}</C
     ),
   },
   {
-    slug: 'mermaid',
-    title: 'Coming from Mermaid',
-    description: 'Paste your Mermaid, then add motion.',
+    slug: 'existing-diagrams',
+    title: 'Bring existing diagrams',
+    description: 'Paste the diagrams you already have, then add motion.',
     toc: [{ id: 'same', label: 'What stays the same' }, { id: 'add', label: 'What you add' }],
     body: () => (
       <>
-        <h1>Coming from Mermaid</h1>
-        <p>Flowcharts (<code>graph</code>/<code>flowchart</code>), sequence diagrams and state diagrams use Mermaid syntax, so existing diagrams render unchanged. Set <code>vhyxchart.renderMermaidFences</code> in VS Code, or pass <code>{'{ mermaid: true }'}</code> to <code>autoRender</code>, to take over <code>```mermaid</code> fences.</p>
+        <h1>Bring existing diagrams</h1>
+        <p>Flowcharts (<code>graph</code>/<code>flowchart</code>), sequence diagrams and state diagrams use the widely adopted text syntax, including diagrams written for Mermaid, so existing diagrams render unchanged. Set <code>vhyxchart.renderCompatibleFences</code> in VS Code, or pass <code>{'{ compatibleFences: true }'}</code> to <code>autoRender</code>, to also render those existing code fences.</p>
         <h2 id="same">What stays the same</h2>
         <ul>
           <li>All node shapes, edge kinds (<code>--&gt; -.-&gt; ==&gt; --- --o --x &lt;--&gt; ~~~</code>), labels, <code>&amp;</code>, <code>subgraph</code>, <code>classDef</code>, <code>class</code>, <code>:::</code>, <code>style</code>.</li>
@@ -205,7 +205,7 @@ spacing: relaxed     # compact | normal | relaxed
   {
     slug: 'state',
     title: 'State diagrams',
-    description: 'Mermaid stateDiagram, animated.',
+    description: 'State diagrams, animated.',
     toc: [{ id: 'example', label: 'Example' }],
     body: () => (
       <>

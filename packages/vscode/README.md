@@ -2,7 +2,7 @@
 
 Animated diagrams that live next to your code.
 
-- **Markdown preview**: ` ```vhyx ` fences render as live, animated players in VS Code's built-in Markdown preview (`Ctrl/Cmd+Shift+V`). Optionally take over ` ```mermaid ` fences too (`vhyxchart.renderMermaidFences`).
+- **Markdown preview**: ` ```vhyx ` fences render as live, animated players in VS Code's built-in Markdown preview (`Ctrl/Cmd+Shift+V`). Optionally render existing compatible diagram fences too (`vhyxchart.renderCompatibleFences`).
 - **`.vhyx` files**: syntax highlighting, snippets (`flow`, `seq`, `array`, `scenario`), folding, and **Open Animated Preview to the Side** (`Ctrl/Cmd+K V`) that updates as you type.
 - **Inline errors**: diagram mistakes are underlined with the exact line and a suggested fix — in `.vhyx` files and inside Markdown fences.
 - **Export**: `VhyxChart: Export Animated SVG` (plays on GitHub, in `<img>`, Notion) and `VhyxChart: Export Interactive HTML`.
@@ -26,7 +26,7 @@ scenario Request
 |---|---|---|
 | `vhyxchart.theme` | `auto` | `auto` follows the editor theme |
 | `vhyxchart.autoplay` | `true` | Start scenarios automatically |
-| `vhyxchart.renderMermaidFences` | `false` | Render ` ```mermaid ` fences with VhyxChart |
+| `vhyxchart.renderCompatibleFences` | `false` | Also render existing compatible diagram fences (` ```mermaid `) with VhyxChart |
 
 ## Build locally
 
