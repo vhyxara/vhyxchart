@@ -13,13 +13,14 @@
     "@vhyxchart/examples": "workspace:*",
     "@vhyxchart/react": "workspace:*",
     "@vhyxseal/core": "1.0.0-rc.4",
-    "@vhyxui/blocks": "0.1.1",
+    "@vhyxui/blocks": "0.1.2",
     "@vhyxui/core": "0.2.1",
-    "@vhyxui/react": "0.4.1",
+    "@vhyxui/react": "0.4.2",
     "@vhyxui/tokens": "0.2.0-alpha",
     "next": "^15.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "@vhyxui/icons": "0.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
