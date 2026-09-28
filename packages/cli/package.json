@@ -1,6 +1,6 @@
 {
   "name": "@vhyxchart/cli",
-  "version": "0.1.0-alpha",
+  "version": "0.1.1",
   "description": "VhyxChart command line: render diagrams and Markdown to animated SVG, lint diagrams in CI, export interactive HTML.",
   "keywords": [
     "vhyxchart",
