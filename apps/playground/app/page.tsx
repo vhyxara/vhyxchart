@@ -1,5 +1,6 @@
 'use client';
 
+import { MoonIcon, SunIcon } from '@vhyxui/icons';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { parse, render, renderAnimatedSvg, type Diagnostic } from '@vhyxchart/core';
 import { VhyxChart } from '@vhyxchart/react';
@@ -103,7 +104,7 @@ export default function Playground(): React.ReactElement {
           <HStack gap={2} wrap>
             <Button size="sm" variant="ghost" asChild><a href="https://github.com/vhyxara/vhyxchart">GitHub</a></Button>
             <Button size="sm" variant="ghost" onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))} aria-label="Toggle theme">
-              {theme === 'dark' ? '☀' : '☾'}
+              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
             </Button>
           </HStack>
         </header>
