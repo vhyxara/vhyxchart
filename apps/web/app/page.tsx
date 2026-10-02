@@ -1,6 +1,6 @@
 'use client';
 
-import { CirclePlayIcon, FeatherIcon, GitBranchIcon, LifeBuoyIcon, PlayIcon, PuzzleIcon } from '@vhyxui/icons';
+import { ArrowRightIcon, CirclePlayIcon, ExternalLinkIcon, FeatherIcon, GitBranchIcon, LifeBuoyIcon, PlayIcon, PuzzleIcon } from '@vhyxui/icons';
 import React, { useState } from 'react';
 import { VhyxChart } from '@vhyxchart/react';
 import { EXAMPLES } from '@vhyxchart/examples';
@@ -23,7 +23,7 @@ const PLACES = [
   { title: 'GitHub READMEs', code: 'npx @vhyxchart/cli render flow.vhyx\n![Flow](flow.svg)', text: 'Animated SVG that plays inside images. No JavaScript.' },
   { title: 'React', code: '<VhyxChart source={source} autoplay controls />', text: 'Interactive player, headless hook, server component.' },
   { title: 'Any web page', code: '<vhyx-chart>\nflowchart LR\n  a --> b\n</vhyx-chart>', text: 'One script tag and a custom element.' },
-  { title: 'VS Code', code: '```vhyx\nflowchart LR\n  a --> b\n```', text: 'Live preview in Markdown and .vhyx files.', link: { label: 'Install from Open VSX →', href: OPENVSX } },
+  { title: 'VS Code', code: '```vhyx\nflowchart LR\n  a --> b\n```', text: 'Live preview in Markdown and .vhyx files.', link: { label: 'Install from Open VSX', href: OPENVSX } },
 ];
 
 function copyInstall(): void {
@@ -186,7 +186,7 @@ export default function Home() {
                     <Text weight="semibold">{p.title}</Text>
                     <pre className="code">{p.code}</pre>
                     <Text size="sm" tone="muted">{p.text}</Text>
-                    {'link' in p && p.link ? <Text size="sm"><a href={p.link.href}>{p.link.label}</a></Text> : null}
+                    {'link' in p && p.link ? <Text size="sm"><a href={p.link.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>{p.link.label} <ExternalLinkIcon size="0.9em" /></a></Text> : null}
                   </Stack>
                 </Card>
               ))}
@@ -210,7 +210,7 @@ export default function Home() {
                   <Stack gap={2}>
                     <HStack gap={2} align="center"><Text weight="semibold">{p.name}</Text><Badge>{p.role}</Badge></HStack>
                     <Text size="sm" tone="muted">{p.text}</Text>
-                    <Text size="sm"><a href={p.href}>Learn more →</a></Text>
+                    <Text size="sm"><a href={p.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>Learn more <ArrowRightIcon size="0.9em" /></a></Text>
                   </Stack>
                 </Card>
               ))}
