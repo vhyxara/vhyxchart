@@ -15,12 +15,12 @@
     "@vhyxseal/core": "1.0.0-rc.5",
     "@vhyxui/blocks": "0.1.4",
     "@vhyxui/core": "0.2.2",
-    "@vhyxui/react": "0.4.5",
+    "@vhyxui/react": "0.4.6",
     "@vhyxui/tokens": "0.2.0-alpha",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@vhyxui/icons": "0.2.2"
+    "@vhyxui/icons": "0.2.3"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
