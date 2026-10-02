@@ -1,6 +1,6 @@
 {
   "name": "@vhyxchart/react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React components for VhyxChart — animated diagrams from text. <VhyxChart>, a headless hook for custom controls, and a server-renderable <VhyxChartStatic>.",
   "keywords": [
     "vhyxchart",
