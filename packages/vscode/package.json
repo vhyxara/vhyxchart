@@ -1,7 +1,7 @@
 {
   "name": "vhyxchart-vscode",
   "displayName": "VhyxChart — animated diagrams",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Live, animated architecture, flow, sequence and algorithm diagrams in Markdown preview and .vhyx files. Familiar diagram syntax with scenarios that move.",
   "keywords": [
