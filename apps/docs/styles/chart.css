@@ -1,0 +1,77 @@
+/*
+ * VhyxChart docs — the Vhyxara look (deep navy, cyan accent, Geist), dark by default.
+ * Loaded after globals.css. Re-points the --vhyx-color-* tokens so VhyxUI components follow both themes.
+ */
+
+:root,
+:root[data-theme="dark"] {
+  --ch-bg: #07090f;
+  --ch-bg-subtle: #0a0d15;
+  --ch-surface: #0d111b;
+  --ch-surface-raised: #111726;
+  --ch-border: #1c2333;
+  --ch-border-strong: #2a3247;
+  --ch-text: #e6e9f2;
+  --ch-text-subtle: #a3abbe;
+  --ch-text-muted: #8a93a8;
+  --ch-accent: #38bdf8;
+  --ch-accent-hover: #7dd3fc;
+  --ch-accent-text: #7dd3fc;
+  --ch-accent-subtle: #0b2233;
+  --ch-accent-border: #16324a;
+  --ch-on-accent: #04121c;
+  --ch-grid: #121826;
+  --ch-code-key: #7dd3fc;
+}
+
+:root[data-theme="light"] {
+  --ch-bg: #f7f8fa;
+  --ch-bg-subtle: #f1f3f6;
+  --ch-surface: #ffffff;
+  --ch-surface-raised: #ffffff;
+  --ch-border: #e3e6ec;
+  --ch-border-strong: #cfd4dd;
+  --ch-text: #121620;
+  --ch-text-subtle: #3f4757;
+  --ch-text-muted: #5b6475;
+  --ch-accent: #0284c7;
+  --ch-accent-hover: #0369a1;
+  --ch-accent-text: #0369a1;
+  --ch-accent-subtle: #e6f4fb;
+  --ch-accent-border: #b6dcf1;
+  --ch-on-accent: #ffffff;
+  --ch-grid: #e9ecf1;
+  --ch-code-key: #0369a1;
+}
+
+:root,
+:root[data-theme="dark"],
+:root[data-theme="light"] {
+  /* dogfooded VhyxUI components */
+  --vhyx-font-sans: var(--font-geist), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --vhyx-font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --vhyx-color-bg: var(--ch-bg);
+  --vhyx-color-bg-subtle: var(--ch-bg-subtle);
+  --vhyx-color-surface: var(--ch-surface);
+  --vhyx-color-border: var(--ch-border);
+  --vhyx-color-border-strong: var(--ch-border-strong);
+  --vhyx-color-border-focus: var(--ch-accent);
+  --vhyx-color-text: var(--ch-text);
+  --vhyx-color-text-subtle: var(--ch-text-subtle);
+  --vhyx-color-text-muted: var(--ch-text-muted);
+  --vhyx-color-accent: var(--ch-accent);
+  --vhyx-color-accent-hover: var(--ch-accent-hover);
+  --vhyx-color-accent-active: var(--ch-accent-hover);
+  --vhyx-color-accent-subtle: var(--ch-accent-subtle);
+  --vhyx-color-text-on-accent: var(--ch-on-accent);
+}
+
+body {
+  font-family: var(--vhyx-font-sans);
+  background: var(--ch-bg);
+}
+
+code, pre, kbd, samp { font-family: var(--vhyx-font-mono); }
+
+body { font-family: var(--vhyx-font-sans); background: var(--ch-bg); color: var(--ch-text); -webkit-font-smoothing: antialiased; }
+code, pre, kbd { font-family: var(--vhyx-font-mono); }
