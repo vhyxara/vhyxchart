@@ -7,7 +7,7 @@ import { EXAMPLES } from '@vhyxchart/examples';
 import { Badge, Button, Card, Container, Heading, HStack, Stack, Text, VhyxUIProvider, toast } from '@vhyxui/react';
 import { CTASection, FeatureGrid, Hero, MarketingLayout } from '@vhyxui/blocks';
 import { PIPELINE } from '../components/diagram';
-import { DOCS, GITHUB, NPM, VHYXSEAL, VHYXUI, VHYXARA, OPENVSX } from '../components/links';
+import { DOCS, GITHUB, NPM, VHYXSEAL, VHYXUI, VHYXARA, OPENVSX, MARKETPLACE } from '../components/links';
 
 const INSTALL = 'npm install @vhyxchart/react';
 const GALLERY = ['checkout', 'oauth', 'agent', 'bubble', 'order-states'];
@@ -23,7 +23,7 @@ const PLACES = [
   { title: 'GitHub READMEs', code: 'npx @vhyxchart/cli render flow.vhyx\n![Flow](flow.svg)', text: 'Animated SVG that plays inside images. No JavaScript.' },
   { title: 'React', code: '<VhyxChart source={source} autoplay controls />', text: 'Interactive player, headless hook, server component.' },
   { title: 'Any web page', code: '<vhyx-chart>\nflowchart LR\n  a --> b\n</vhyx-chart>', text: 'One script tag and a custom element.' },
-  { title: 'VS Code', code: '```vhyx\nflowchart LR\n  a --> b\n```', text: 'Live preview in Markdown and .vhyx files.', link: { label: 'Install from Open VSX', href: OPENVSX } },
+  { title: 'VS Code', code: '```vhyx\nflowchart LR\n  a --> b\n```', text: 'Live preview in Markdown and .vhyx files.', link: { label: 'Install from the VS Code Marketplace', href: MARKETPLACE } },
 ];
 
 function copyInstall(): void {
@@ -89,7 +89,7 @@ export default function Home() {
           brand: 'VhyxChart',
           tagline: <>Diagrams that move. MIT licensed, by <a href={VHYXARA} className="brand-link">Vhyxara</a>.</>,
           columns: [
-            { title: 'Project', links: [{ label: 'Documentation', href: DOCS }, { label: 'npm', href: NPM }, { label: 'Open VSX', href: OPENVSX }, { label: 'GitHub', href: GITHUB }] },
+            { title: 'Project', links: [{ label: 'Documentation', href: DOCS }, { label: 'npm', href: NPM }, { label: 'VS Code Marketplace', href: MARKETPLACE }, { label: 'Open VSX', href: OPENVSX }, { label: 'GitHub', href: GITHUB }] },
             { title: 'Family', links: [{ label: 'VhyxUI — components', href: VHYXUI }, { label: 'VhyxSeal — agent contracts', href: VHYXSEAL }] },
           ],
           legal: <>© 2026 <a href={VHYXARA} className="brand-link">Vhyxara</a></>,
