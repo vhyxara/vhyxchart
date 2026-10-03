@@ -22,8 +22,8 @@ scenario Request
 
 ## Install
 
+- **VS Code:** search for **VhyxChart** in the Extensions view, or see the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=vhyxara.vhyxchart-vscode). From a terminal: `code --install-extension vhyxara.vhyxchart-vscode`.
 - **Cursor, VSCodium, Windsurf:** search for **VhyxChart** in the Extensions view, or see [Open VSX](https://open-vsx.org/extension/vhyxara/vhyxchart-vscode).
-- **VS Code:** download the [.vsix](https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.1/file/vhyxara.vhyxchart-vscode-0.1.1.vsix) and run **Extensions: Install from VSIX…**.
 
 ## Settings
 

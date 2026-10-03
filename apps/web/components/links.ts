@@ -5,3 +5,4 @@ export const VHYXUI = 'https://vhyxui.com';
 export const VHYXSEAL = 'https://vhyxseal.com';
 export const VHYXARA = 'https://vhyxara.com';
 export const OPENVSX = 'https://open-vsx.org/extension/vhyxara/vhyxchart-vscode';
+export const MARKETPLACE = 'https://marketplace.visualstudio.com/items?itemName=vhyxara.vhyxchart-vscode';

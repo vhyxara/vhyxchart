@@ -309,9 +309,9 @@ npx vhyxchart check README.src.md docs/**/*.vhyx`}</Code>
           <li>Export animated SVG or interactive HTML.</li>
         </ul>
         <h2 id="install">Install</h2>
+        <p><strong>VS Code:</strong> open the Extensions view and search for <strong>VhyxChart</strong>, or install from the <a href="https://marketplace.visualstudio.com/items?itemName=vhyxara.vhyxchart-vscode">VS Code Marketplace</a>. From a terminal:</p>
+        <Code>{`code --install-extension vhyxara.vhyxchart-vscode`}</Code>
         <p><strong>Cursor, VSCodium, Windsurf:</strong> open the Extensions view and search for <strong>VhyxChart</strong>, or install from <a href="https://open-vsx.org/extension/vhyxara/vhyxchart-vscode">Open VSX</a>.</p>
-        <p><strong>VS Code:</strong> download the <a href="https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.1/file/vhyxara.vhyxchart-vscode-0.1.1.vsix">.vsix file</a>, then run <strong>Extensions: Install from VSIX…</strong> from the Command Palette, or:</p>
-        <Code>{`code --install-extension vhyxara.vhyxchart-vscode-0.1.1.vsix`}</Code>
         <p>To build it from source instead:</p>
         <Code>{`pnpm --filter vhyxchart-vscode package
 code --install-extension packages/vscode/vhyxchart-vscode-0.1.1.vsix`}</Code>
