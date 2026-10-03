@@ -23,7 +23,7 @@ scenario Request
 ## Install
 
 - **Cursor, VSCodium, Windsurf:** search for **VhyxChart** in the Extensions view, or see [Open VSX](https://open-vsx.org/extension/vhyxara/vhyxchart-vscode).
-- **VS Code:** download the [.vsix](https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.0/file/vhyxara.vhyxchart-vscode-0.1.0.vsix) and run **Extensions: Install from VSIX…**.
+- **VS Code:** download the [.vsix](https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.1/file/vhyxara.vhyxchart-vscode-0.1.1.vsix) and run **Extensions: Install from VSIX…**.
 
 ## Settings
 
@@ -38,5 +38,5 @@ scenario Request
 ```bash
 pnpm --filter vhyxchart-vscode build
 cd packages/vscode && npx @vscode/vsce package --no-dependencies
-code --install-extension vhyxchart-vscode-0.1.0.vsix
+code --install-extension vhyxchart-vscode-0.1.1.vsix
 ```

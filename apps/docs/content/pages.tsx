@@ -310,11 +310,11 @@ npx vhyxchart check README.src.md docs/**/*.vhyx`}</Code>
         </ul>
         <h2 id="install">Install</h2>
         <p><strong>Cursor, VSCodium, Windsurf:</strong> open the Extensions view and search for <strong>VhyxChart</strong>, or install from <a href="https://open-vsx.org/extension/vhyxara/vhyxchart-vscode">Open VSX</a>.</p>
-        <p><strong>VS Code:</strong> download the <a href="https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.0/file/vhyxara.vhyxchart-vscode-0.1.0.vsix">.vsix file</a>, then run <strong>Extensions: Install from VSIX…</strong> from the Command Palette, or:</p>
-        <Code>{`code --install-extension vhyxara.vhyxchart-vscode-0.1.0.vsix`}</Code>
+        <p><strong>VS Code:</strong> download the <a href="https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.1/file/vhyxara.vhyxchart-vscode-0.1.1.vsix">.vsix file</a>, then run <strong>Extensions: Install from VSIX…</strong> from the Command Palette, or:</p>
+        <Code>{`code --install-extension vhyxara.vhyxchart-vscode-0.1.1.vsix`}</Code>
         <p>To build it from source instead:</p>
         <Code>{`pnpm --filter vhyxchart-vscode package
-code --install-extension packages/vscode/vhyxchart-vscode-0.1.0.vsix`}</Code>
+code --install-extension packages/vscode/vhyxchart-vscode-0.1.1.vsix`}</Code>
       </>
     ),
   },

@@ -36,7 +36,7 @@ scenario Save a profile
 
 Install **VhyxChart** from the Extensions view in Cursor, VSCodium or Windsurf, or
 from [Open VSX](https://open-vsx.org/extension/vhyxara/vhyxchart-vscode). In VS Code, download the
-[.vsix](https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.0/file/vhyxara.vhyxchart-vscode-0.1.0.vsix) and run
+[.vsix](https://open-vsx.org/api/vhyxara/vhyxchart-vscode/0.1.1/file/vhyxara.vhyxchart-vscode-0.1.1.vsix) and run
 **Extensions: Install from VSIX…**. `` ```vhyx `` fences then animate in the Markdown
 preview, and `.vhyx` files get highlighting, errors and a live side preview.
 

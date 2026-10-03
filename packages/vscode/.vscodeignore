@@ -6,3 +6,4 @@ tsconfig.json
 vitest.config.ts
 media/icon.svg
 **/*.map
+.turbo/**
