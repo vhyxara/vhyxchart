@@ -37,7 +37,7 @@ importers:
         version: 1.0.0-rc.6
       '@vhyxui/blocks':
         specifier: 0.1.5
-        version: 0.1.5(@vhyxui/react@0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 0.1.5(@vhyxui/react@0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/core':
         specifier: 0.2.3
         version: 0.2.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -45,11 +45,11 @@ importers:
         specifier: 0.2.3
         version: 0.2.3(react@19.3.0)
       '@vhyxui/react':
-        specifier: 0.4.10
-        version: 0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.4.11
+        version: 0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/tokens':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
       next:
         specifier: ^15.0.0
         version: 15.5.26(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -89,7 +89,7 @@ importers:
         version: 1.0.0-rc.6
       '@vhyxui/blocks':
         specifier: 0.1.5
-        version: 0.1.5(@vhyxui/react@0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 0.1.5(@vhyxui/react@0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/core':
         specifier: 0.2.3
         version: 0.2.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -97,11 +97,11 @@ importers:
         specifier: 0.2.3
         version: 0.2.3(react@19.3.0)
       '@vhyxui/react':
-        specifier: 0.4.10
-        version: 0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.4.11
+        version: 0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/tokens':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
       next:
         specifier: ^15.0.0
         version: 15.5.26(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -141,7 +141,7 @@ importers:
         version: 1.0.0-rc.6
       '@vhyxui/blocks':
         specifier: 0.1.5
-        version: 0.1.5(@vhyxui/react@0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 0.1.5(@vhyxui/react@0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/core':
         specifier: 0.2.3
         version: 0.2.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -149,11 +149,11 @@ importers:
         specifier: 0.2.3
         version: 0.2.3(react@19.3.0)
       '@vhyxui/react':
-        specifier: 0.4.10
-        version: 0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: 0.4.11
+        version: 0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@vhyxui/tokens':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
       next:
         specifier: ^15.0.0
         version: 15.5.26(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -1054,8 +1054,8 @@ packages:
     peerDependencies:
       react: '>=18'
 
-  '@vhyxui/react@0.4.10':
-    resolution: {integrity: sha512-DYaJar7nys++wLmHxHAYvPNL7+Z6RNgfkHm/7DCuQR0QtRRCc4J32H6YDWPI+dBDcOC+Yb6NO9qf1C4helYYfg==}
+  '@vhyxui/react@0.4.11':
+    resolution: {integrity: sha512-Eols0rEMd7m2NPuHiT4SYXMKyjo38Ny3Aaftb55yz/RP2Qp9Kz2S8Z35f3+IAI2AdebjIqVdrieyg3pB+f7lcw==}
     engines: {node: '>=20.19'}
     peerDependencies:
       '@testing-library/react': '>=14'
@@ -1068,8 +1068,8 @@ packages:
       react-hook-form:
         optional: true
 
-  '@vhyxui/tokens@0.3.0':
-    resolution: {integrity: sha512-ok/NJWZDh0GvRPMqG6rYG9xa2/i/oFagU0f/LrMFivhzgysjtSG3R1zCdRRR2tkW8i+62uzv+qkZXBeqk/KHEw==}
+  '@vhyxui/tokens@0.4.0':
+    resolution: {integrity: sha512-qaKrf8vSHpv2KZK4BKDo5cKdDEnXSBGDYWAkzKx4eW1Fv1z3TxAqZAH9vl1HkzWLJLt3bXa85uuhARrXNhV2hQ==}
     engines: {node: '>=20.19'}
 
   '@vitest/expect@2.1.9':
@@ -2121,10 +2121,10 @@ snapshots:
       '@vhyxseal/core': 1.0.0-rc.6
       react: 19.3.0
 
-  '@vhyxui/blocks@0.1.5(@vhyxui/react@0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@vhyxui/blocks@0.1.5(@vhyxui/react@0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       '@vhyxui/icons': 0.2.3(react@19.3.0)
-      '@vhyxui/react': 0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@vhyxui/react': 0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
 
@@ -2138,7 +2138,7 @@ snapshots:
     dependencies:
       react: 19.3.0
 
-  '@vhyxui/react@0.4.10(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@vhyxui/react@0.4.11(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       '@vhyxseal/react': 1.0.0-rc.6(react@19.3.0)
       '@vhyxui/core': 0.2.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -2148,7 +2148,7 @@ snapshots:
     optionalDependencies:
       '@testing-library/react': 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
-  '@vhyxui/tokens@0.3.0': {}
+  '@vhyxui/tokens@0.4.0': {}
 
   '@vitest/expect@2.1.9':
     dependencies:
