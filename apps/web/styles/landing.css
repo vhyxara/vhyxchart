@@ -127,13 +127,15 @@ a { color: inherit; }
 .lp-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--vhyx-color-border); }
 .lp-stat { padding: 28px 24px; display: flex; flex-direction: column; gap: 4px; }
 .lp-stat + .lp-stat { border-left: 1px solid var(--vhyx-color-border); }
-.lp-stat strong { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.lp-stat strong { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; background: linear-gradient(180deg, var(--vhyx-color-text) 20%, var(--lp-brand)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .lp-stat > span { font-size: 14px; color: var(--vhyx-color-text-muted); }
 
 /* ── Sections ── */
 .lp-section { padding: 112px 0 0; }
 .lp-section:last-of-type { padding-bottom: 112px; }
-.lp-head { display: flex; flex-direction: column; gap: 14px; max-width: 46rem; margin-bottom: 40px; }
+.lp-head { position: relative; display: flex; flex-direction: column; gap: 14px; max-width: 46rem; margin-bottom: 40px; }
+.lp-section { position: relative; isolation: isolate; }
+.lp-section::before { content: ''; position: absolute; z-index: -1; top: 40px; left: 50%; width: min(900px, 90vw); height: 360px; transform: translateX(-60%); background: radial-gradient(closest-side, color-mix(in srgb, var(--lp-brand) 9%, transparent), transparent); pointer-events: none; }
 .lp-head--center { margin-inline: auto; text-align: center; align-items: center; }
 .lp-h2 { margin: 0; font-size: clamp(2rem, 1.3rem + 2.2vw, 3rem); line-height: 1.08; letter-spacing: -0.035em; font-weight: 700; }
 .lp-sub { margin: 0; font-size: 17px; line-height: 1.6; color: var(--vhyx-color-text-subtle); }
@@ -143,18 +145,21 @@ a { color: inherit; }
 .lp-tile {
   --tile-x: 50%; --tile-y: 0%;
   position: relative; grid-column: span 3; display: flex; flex-direction: column; gap: 14px; min-height: 280px; padding: 26px;
-  border-radius: 20px; border: 1px solid var(--vhyx-color-border); background: var(--vhyx-color-surface); overflow: hidden;
-  transition: border-color .3s var(--lp-ease), transform .3s var(--lp-ease);
+  border-radius: 20px; border: 1px solid var(--vhyx-color-border); overflow: hidden;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--lp-brand) 5%, var(--vhyx-color-surface)), var(--vhyx-color-surface) 55%);
+  transition: border-color .3s var(--lp-ease), transform .3s var(--lp-ease), box-shadow .3s var(--lp-ease);
 }
 .lp-tile::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(420px circle at var(--tile-x) var(--tile-y), var(--lp-brand-soft), transparent 60%); transition: opacity .3s var(--lp-ease); }
-.lp-tile:hover { border-color: color-mix(in srgb, var(--lp-brand) 45%, var(--vhyx-color-border)); transform: translateY(-3px); }
+.lp-tile::after { content: ''; position: absolute; left: 24px; right: 24px; top: 0; height: 1px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--lp-brand) 70%, transparent), transparent); opacity: .7; }
+.lp-tile:hover { border-color: color-mix(in srgb, var(--lp-brand) 45%, var(--vhyx-color-border)); transform: translateY(-3px); box-shadow: 0 24px 60px -32px var(--lp-glow); }
 .lp-tile:hover::before { opacity: 1; }
 .lp-tile--4 { grid-column: span 4; }
 .lp-tile--2 { grid-column: span 2; }
 .lp-tile h3 { margin: 0; font-size: 19px; letter-spacing: -0.02em; }
 .lp-tile p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--vhyx-color-text-muted); }
 .lp-tile-visual { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; min-height: 120px; }
-.lp-tile-icon { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 10px; background: var(--lp-brand-soft); color: var(--lp-brand); }
+.lp-tile:not(:has(.lp-tile-visual)) { min-height: 0; }
+.lp-tile-icon { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 12px; color: var(--lp-brand); background: linear-gradient(135deg, color-mix(in srgb, var(--lp-brand) 28%, transparent), color-mix(in srgb, var(--lp-brand) 8%, transparent)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lp-brand) 35%, transparent); }
 
 /* Tile visuals */
 .kbd-row { display: flex; gap: 10px; }
@@ -185,7 +190,7 @@ a { color: inherit; }
 .mini-dash section { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .mini-dash .card { height: 44px; border-radius: 10px; background: var(--vhyx-color-bg); border: 1px solid var(--vhyx-color-border); }
 .mini-dash .bars { grid-column: 1 / -1; height: 70px; display: flex; align-items: flex-end; gap: 6px; padding: 10px; border-radius: 10px; background: var(--vhyx-color-bg); border: 1px solid var(--vhyx-color-border); }
-.mini-dash .bars b { flex: 1; border-radius: 4px 4px 2px 2px; background: color-mix(in srgb, var(--lp-brand) 70%, transparent); transform-origin: bottom; animation: lp-bar 2.8s var(--lp-ease) infinite alternate; }
+.mini-dash .bars b { flex: 1; height: 100%; border-radius: 4px 4px 2px 2px; background: color-mix(in srgb, var(--lp-brand) 70%, transparent); transform-origin: bottom; animation: lp-bar 2.8s var(--lp-ease) infinite alternate; }
 .mini-dash .bars b:nth-child(2n) { animation-delay: -.8s; } .mini-dash .bars b:nth-child(3n) { animation-delay: -1.6s; }
 @keyframes lp-bar { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
 
@@ -259,6 +264,14 @@ a { color: inherit; }
   .lens-ring, .lens-chip { transition: none; }
   html { scroll-behavior: auto; }
 }
+
+/* Embedded VhyxChart players use the site's brand colour for their controls */
+.vc-player { --vc-accent: var(--lp-brand) !important; --vc-accent-soft: var(--lp-brand-soft) !important; --vc-on-accent: var(--vhyx-color-text-on-accent) !important; }
+
+/* Component showcase: two roomy columns, equal heights */
+.lp-showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+.lp-showcase > .reveal, .lp-showcase > .reveal > * { height: 100%; }
+@media (max-width: 860px) { .lp-showcase { grid-template-columns: minmax(0, 1fr); } }
 
 /* ── VhyxChart: gallery and places ── */
 .lp-hero-chart { padding: 14px; }
