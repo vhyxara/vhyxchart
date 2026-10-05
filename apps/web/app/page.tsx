@@ -7,7 +7,7 @@ import { EXAMPLES } from '@vhyxchart/examples';
 import { Badge, Button, Card, Container, Heading, HStack, Stack, Text, VhyxUIProvider, toast } from '@vhyxui/react';
 import { CTASection, FeatureGrid, Hero, MarketingLayout } from '@vhyxui/blocks';
 import { PIPELINE } from '../components/diagram';
-import { DOCS, GITHUB, NPM, VHYXSEAL, VHYXUI, VHYXARA, OPENVSX, MARKETPLACE } from '../components/links';
+import { DOCS, EXAMPLES_DOCS, GET_STARTED, GITHUB, NPM, PLAYGROUND, REACT_DOCS, VHYXSEAL, VHYXUI, VHYXARA, OPENVSX, MARKETPLACE } from '../components/links';
 
 const INSTALL = 'npm install @vhyxchart/react';
 const GALLERY = ['checkout', 'oauth', 'agent', 'bubble', 'order-states'];
@@ -77,11 +77,13 @@ export default function Home() {
             { label: 'Examples', href: '#examples' },
             { label: 'How it works', href: '#how' },
             { label: 'Use it', href: '#use' },
+            { label: 'Docs', href: DOCS, external: true },
+            { label: 'Playground', href: PLAYGROUND, external: true },
             { label: 'GitHub', href: GITHUB, external: true },
           ],
           actions: (
             <Button size="sm" asChild contract={{ id: 'get-started', intent: 'navigate', description: 'Open the VhyxChart documentation' }}>
-              <a href={DOCS}>Get started</a>
+              <a href={GET_STARTED}>Get started</a>
             </Button>
           ),
         }}
@@ -89,7 +91,8 @@ export default function Home() {
           brand: 'VhyxChart',
           tagline: <>Diagrams that move. MIT licensed, by <a href={VHYXARA} className="brand-link">Vhyxara</a>.</>,
           columns: [
-            { title: 'Project', links: [{ label: 'Documentation', href: DOCS }, { label: 'npm', href: NPM }, { label: 'VS Code Marketplace', href: MARKETPLACE }, { label: 'Open VSX', href: OPENVSX }, { label: 'GitHub', href: GITHUB }] },
+            { title: 'Learn', links: [{ label: 'Documentation', href: DOCS }, { label: 'Examples', href: EXAMPLES_DOCS }, { label: 'React', href: REACT_DOCS }, { label: 'Playground', href: PLAYGROUND }] },
+            { title: 'Project', links: [{ label: 'npm', href: NPM }, { label: 'VS Code Marketplace', href: MARKETPLACE }, { label: 'Open VSX', href: OPENVSX }, { label: 'GitHub', href: GITHUB }] },
             { title: 'Family', links: [{ label: 'VhyxUI — components', href: VHYXUI }, { label: 'VhyxSeal — agent contracts', href: VHYXSEAL }] },
           ],
           legal: <>© 2026 <a href={VHYXARA} className="brand-link">Vhyxara</a></>,
@@ -100,8 +103,8 @@ export default function Home() {
           title="Diagrams that move."
           description="Write architecture, flows, sequences and algorithms as plain text. Add a scenario and watch requests travel, services change state and values sort — in docs, READMEs, VS Code and React."
           actions={[
-            { label: 'Get started', href: DOCS },
-            { label: 'View on GitHub', href: GITHUB, variant: 'outline' },
+            { label: 'Get started', href: GET_STARTED },
+            { label: 'Open playground', href: PLAYGROUND, variant: 'outline' },
           ]}
         />
 
@@ -204,7 +207,7 @@ export default function Home() {
               {[
                 { name: 'VhyxUI', role: 'Components', text: 'Accessible React components with agent contracts built in.', href: VHYXUI },
                 { name: 'VhyxSeal', role: 'Agents', text: 'The contract layer that tells AI agents what your UI does.', href: VHYXSEAL },
-                { name: 'VhyxChart', role: 'Diagrams', text: 'Text-defined diagrams that animate.', href: GITHUB },
+                { name: 'VhyxChart', role: 'Diagrams', text: 'Text-defined diagrams that animate.', href: DOCS },
               ].map((p) => (
                 <Card key={p.name} variant="outline" padding="lg">
                   <Stack gap={2}>
@@ -223,8 +226,9 @@ export default function Home() {
             title="Make your next diagram move"
             description="Write it as text, add a scenario, and ship it to your docs, README or app."
             actions={[
-              { label: 'Get started', href: DOCS },
-              { label: 'Star on GitHub', href: GITHUB, variant: 'outline' },
+              { label: 'Get started', href: GET_STARTED },
+              { label: 'Open playground', href: PLAYGROUND, variant: 'outline' },
+              { label: 'Star on GitHub', href: GITHUB, variant: 'ghost' },
             ]}
           />
         </Container>
