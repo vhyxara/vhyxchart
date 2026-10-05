@@ -139,9 +139,9 @@ const PLAYER_CSS = `
 .vc-player .vc-heading{display:flex;align-items:center;gap:10px;min-width:0}
 .vc-player .vc-title{font-size:14px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .vc-player .vc-step{font:500 11px/1 var(--vc-mono);color:var(--vc-muted);padding:4px 7px;border-radius:999px;background:var(--vc-surface-2);border:1px solid var(--vc-border);white-space:nowrap;font-variant-numeric:tabular-nums}
-.vc-player .vc-header-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+.vc-player .vc-header-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px 10px;margin-left:auto;min-width:0;max-width:100%}
 
-.vc-player .vc-scenarios{display:inline-flex;gap:2px;padding:2px;border-radius:9px;background:var(--vc-surface-2);border:1px solid var(--vc-border)}
+.vc-player .vc-scenarios{display:inline-flex;gap:2px;padding:2px;border-radius:9px;background:var(--vc-surface-2);border:1px solid var(--vc-border);max-width:100%;overflow-x:auto;scrollbar-width:none}
 .vc-player .vc-chip{all:unset;box-sizing:border-box;cursor:pointer;padding:4px 10px;border-radius:7px;font-size:12px;color:var(--vc-muted);white-space:nowrap;transition:color .2s var(--vc-ease),background-color .2s var(--vc-ease)}
 .vc-player .vc-chip:hover{color:var(--vc-text)}
 .vc-player .vc-chip[aria-selected=true]{background:var(--vc-surface);color:var(--vc-text);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
@@ -190,7 +190,7 @@ const PLAYER_CSS = `
 .vc-player .vc-speed .vc-chip[aria-checked=true]{background:var(--vc-accent-soft);color:var(--vc-accent);box-shadow:none}
 .vc-player .vc-errors{margin:0 14px 14px;font:12px var(--vc-mono);color:#ef4444;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.35);border-radius:8px;padding:8px 10px;white-space:pre-wrap}
 @container vc-player (max-width:560px){.vc-bar{flex-wrap:wrap;justify-content:space-between;gap:8px 10px}.vc-timeline{order:3;flex-basis:100%}}
-@container vc-player (max-width:380px){.vc-header-actions{margin-left:0;width:100%;justify-content:space-between}}
+@container vc-player (max-width:460px){.vc-header-actions{margin-left:0;width:100%;justify-content:space-between}}
 @media (prefers-reduced-motion:reduce){.vc-player *,.vc-player .vc-controls{transition:none!important}}
 `;
 
