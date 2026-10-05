@@ -52,7 +52,7 @@
 @media (max-width: 1023.98px) {
   .ch-header { grid-template-columns: minmax(0, 1fr) auto; height: auto; padding: 10px 16px; row-gap: 8px; }
   .ch-family { display: none; }
-  .ch-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  .ch-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
   .pg { height: auto; min-height: 100dvh; }
   .pg-main { grid-template-columns: minmax(0, 1fr); }
   .pg-pane + .pg-pane { border-left: 0; border-top: 1px solid var(--ch-border); }
