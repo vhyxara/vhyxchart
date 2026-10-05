@@ -28,7 +28,7 @@ const EMPTY: VhyxChartState = { playing: false, time: 0, duration: 0, scenario: 
 /**
  * Headless hook: mounts a VhyxChart player and exposes reactive state so you
  * can build your own controls (e.g. with @vhyxui/react Buttons).
- * Pass `controls: false` to hide the built-in bar.
+ * Pass `controls: false, controlsToggle: false` to hide the built-in controller and its switch.
  *
  * @example
  * const { ref, player, state } = useVhyxChart(source, { controls: false });
@@ -53,8 +53,11 @@ export function useVhyxChart(source: string, options: PlayerOptions = {}): UseVh
     });
   }, []);
 
-  // Mount / unmount when the host element or structural options change.
-  const { theme, controls, loop, autoplay, showErrors, pauseOffscreen } = options;
+  // Mount / unmount when the host element or structural options change. Object options are compared by value
+  // so inline `classNames={{…}}` / `styles={{…}}` don't remount on every render. `controls` is applied live below.
+  const { theme, loop, autoplay, showErrors, pauseOffscreen, header, title, layout, controlsToggle, controlsPosition } = options;
+  const classKey = JSON.stringify(options.classNames ?? null);
+  const styleKey = JSON.stringify(options.styles ?? null);
   useEffect(() => {
     if (!element) return undefined;
     const p = createPlayer(element, sourceRef.current, optionsRef.current);
@@ -76,7 +79,7 @@ export function useVhyxChart(source: string, options: PlayerOptions = {}): UseVh
       p.destroy();
       setPlayer(null);
     };
-  }, [element, sync, theme, controls, loop, autoplay, showErrors, pauseOffscreen]);
+  }, [element, sync, theme, loop, autoplay, showErrors, pauseOffscreen, header, title, layout, controlsToggle, controlsPosition, classKey, styleKey]);
 
   // Hot-swap source without remounting (keeps scenario and time).
   useEffect(() => {
@@ -90,6 +93,11 @@ export function useVhyxChart(source: string, options: PlayerOptions = {}): UseVh
   useEffect(() => {
     if (player && options.speed !== undefined) player.setSpeed(options.speed);
   }, [player, options.speed]);
+
+  // Show or hide the controller without remounting (keeps time, scenario and playback).
+  useEffect(() => {
+    if (player && options.controls !== undefined) player.setControlsVisible(options.controls);
+  }, [player, options.controls]);
 
   useEffect(() => {
     if (player && options.scenario !== undefined && options.scenario !== player.scenario) player.setScenario(options.scenario);
