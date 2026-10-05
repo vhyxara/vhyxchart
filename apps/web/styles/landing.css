@@ -28,7 +28,8 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-a { color: inherit; }
+/* In the `base` layer so VhyxUI components (layered) keep their own link colours, e.g. Button asChild <a>. */
+@layer base { a { color: inherit; } }
 .lp-inner { width: 100%; max-width: var(--lp-max); margin: 0 auto; padding: 0 32px; box-sizing: border-box; }
 .lp-mono { font-family: var(--vhyx-font-mono); }
 .lp-eyebrow { font-family: var(--vhyx-font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lp-brand); }
@@ -242,7 +243,7 @@ a { color: inherit; }
 }
 @media (max-width: 860px) {
   .lp-header { grid-template-columns: minmax(0, 1fr) auto; height: auto; padding: 10px 16px; row-gap: 8px; }
-  .lp-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  .lp-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
   .lp-family { display: none; }
   .lp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-stat:nth-child(3) { border-left: 0; }
@@ -256,6 +257,7 @@ a { color: inherit; }
   .lp-tile, .lp-tile--4, .lp-tile--2 { grid-column: auto; }
   .lp-section { padding-top: 80px; }
   .lp-cta { padding: 48px 20px; }
+  .lp-cta .lp-actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 300px; }
   .lp-install { max-width: 100%; overflow-x: auto; }
 }
 @media (prefers-reduced-motion: reduce) {

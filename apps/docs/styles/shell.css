@@ -1,6 +1,7 @@
 /* VhyxChart docs — header, sidebar, contents, prose and home. Palette lives in chart.css. */
 
-a { color: inherit; }
+/* In the `base` layer so VhyxUI components (layered) keep their own link colours, e.g. Button asChild <a>. */
+@layer base { a { color: inherit; } }
 
 /* ── Top bar ── */
 .ch-header {
@@ -131,7 +132,7 @@ a { color: inherit; }
   .ch-header { grid-template-columns: minmax(0, 1fr) auto; height: auto; padding: 10px 16px; row-gap: 8px; }
   .ch-hamburger { display: inline-flex; }
   .ch-family { display: none; }
-  .ch-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  .ch-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
   .ch-body { grid-template-columns: minmax(0, 1fr); }
   .ch-sidebar { position: fixed; top: 0; left: 0; z-index: 90; width: 260px; height: 100vh; transform: translateX(-100%); transition: transform 200ms ease; }
   .ch-sidebar[data-open='true'] { transform: none; }
