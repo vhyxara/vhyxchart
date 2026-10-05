@@ -158,6 +158,8 @@ const PLAYER_CSS = `
 .vc-player .vc-stage{overflow:auto;max-width:100%;padding:14px}
 .vc-player[data-layout=plain] .vc-stage{padding:0}
 .vc-player .vc-stage>svg{display:block;max-width:100%;height:auto;margin:0 auto}
+/* On phones a wide diagram shrinks only to --vc-min-scale (default 70%) of its natural size, then the stage scrolls sideways, so labels stay readable on phones */
+@media (max-width:640px){.vc-player .vc-stage>svg[style*="--vc-natural-width"]{max-width:none;width:min(var(--vc-natural-width),max(100%,calc(var(--vc-natural-width) * var(--vc-min-scale,.7))))}}
 .vc-player .vc-caption{min-height:20px;padding:0 16px 12px;font-size:13px;line-height:1.5;color:var(--vc-muted);text-align:center}
 .vc-player[data-layout=plain] .vc-caption{padding:8px 0 0}
 
@@ -410,6 +412,7 @@ export function createPlayer(container: HTMLElement, source: string, options: Pl
     const initial = hasTimeline ? frameAt(timeline, 0) : undefined;
     stage.innerHTML = renderSvg(drawn, lay, { id: `${uid}${hashId(src)}`, theme, background: false, ...(initial ? { frame: initial } : {}) });
     svg = stage.querySelector('svg');
+    svg?.style.setProperty('--vc-natural-width', `${lay.width}px`);
     if (titleInHeader && title) svg?.setAttribute('aria-label', title);
     dynamic = svg?.querySelector('.vc-dynamic') ?? null;
     nodeEls.clear();
