@@ -1,5 +1,9 @@
 export const GITHUB = 'https://github.com/vhyxara/vhyxchart';
-export const DOCS = 'https://github.com/vhyxara/vhyxchart#readme';
+export const DOCS = 'https://docs.vhyxchart.com';
+export const GET_STARTED = `${DOCS}/docs/getting-started`;
+export const EXAMPLES_DOCS = `${DOCS}/docs/examples`;
+export const REACT_DOCS = `${DOCS}/docs/react`;
+export const PLAYGROUND = 'https://play.vhyxchart.com';
 export const NPM = 'https://www.npmjs.com/package/@vhyxchart/core';
 export const VHYXUI = 'https://vhyxui.com';
 export const VHYXSEAL = 'https://vhyxseal.com';
