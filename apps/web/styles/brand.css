@@ -1,0 +1,20 @@
+/* VhyxChart brand: sky (Vhyxara family — UI rose, Seal emerald, Chart sky). Overrides the VhyxUI accent tokens. */
+:root,
+:root[data-theme='dark'] {
+  --vhyx-color-accent: #38bdf8;
+  --vhyx-color-accent-hover: #7dd3fc;
+  --vhyx-color-accent-active: #0ea5e9;
+  --vhyx-color-accent-subtle: #0b2233;
+  --vhyx-color-accent-muted: #0f2e45;
+  --vhyx-color-text-on-accent: #04121c;
+  --vhyx-color-border-focus: #38bdf8;
+}
+:root[data-theme='light'] {
+  --vhyx-color-accent: #0284c7;
+  --vhyx-color-accent-hover: #0369a1;
+  --vhyx-color-accent-active: #075985;
+  --vhyx-color-accent-subtle: #e6f4fb;
+  --vhyx-color-accent-muted: #c7e8f8;
+  --vhyx-color-text-on-accent: #ffffff;
+  --vhyx-color-border-focus: #0284c7;
+}

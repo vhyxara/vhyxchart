@@ -1,11 +1,12 @@
 'use client';
 
-import { ArrowRightIcon, CirclePlayIcon, ExternalLinkIcon, FeatherIcon, GitBranchIcon, LifeBuoyIcon, PlayIcon, PuzzleIcon } from '@vhyxui/icons';
+import { ArrowRightIcon, CirclePlayIcon, FeatherIcon, GitBranchIcon, LifeBuoyIcon, PlayIcon, PuzzleIcon } from '@vhyxui/icons';
 import React, { useState } from 'react';
 import { VhyxChart } from '@vhyxchart/react';
 import { EXAMPLES } from '@vhyxchart/examples';
-import { Badge, Button, Card, Container, Heading, HStack, Stack, Text, VhyxUIProvider, toast } from '@vhyxui/react';
-import { CTASection, FeatureGrid, Hero, MarketingLayout } from '@vhyxui/blocks';
+import { Button, Stack, VhyxUIProvider, toast } from '@vhyxui/react';
+import { SiteHeader } from '../components/landing/SiteHeader';
+import { CountUp, Reveal } from '../components/landing/motion';
 import { PIPELINE } from '../components/diagram';
 import { DOCS, EXAMPLES_DOCS, GET_STARTED, GITHUB, NPM, PLAYGROUND, REACT_DOCS, VHYXSEAL, VHYXUI, VHYXARA, OPENVSX, MARKETPLACE } from '../components/links';
 
@@ -33,206 +34,262 @@ function copyInstall(): void {
   );
 }
 
-function Gallery() {
+const MARK = (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="3" y="3" width="8" height="8" rx="1.5" />
+    <rect x="13" y="13" width="8" height="8" rx="1.5" />
+    <path d="M7 11v3a3 3 0 0 0 3 3h3" />
+  </svg>
+);
+
+const FEATURES = [
+  { icon: <PlayIcon size={18} />, title: 'Scenarios', text: 'Many stories on one layout. Switch between success, failure and edge cases.' },
+  { icon: <CirclePlayIcon size={18} />, title: 'Play, step, scrub', text: 'Keyboard controls, reduced-motion support, pauses when off-screen.' },
+  { icon: <GitBranchIcon size={18} />, title: 'Animated on GitHub', text: 'SMIL-animated SVG plays inside README images — no JavaScript, no GIFs.' },
+  { icon: <PuzzleIcon size={18} />, title: 'Bring existing diagrams', text: 'Flowcharts, sequence and state diagrams you already have render unchanged.' },
+  { icon: <LifeBuoyIcon size={18} />, title: 'Helpful errors', text: 'Invalid text never crashes: you get the line, the problem and a suggestion.' },
+  { icon: <FeatherIcon size={18} />, title: 'Tiny and deterministic', text: '~30 KB gzipped, zero dependencies, identical output in Node and the browser.' },
+];
+
+const HERO_SOURCE = EXAMPLES.find((e) => e.id === 'checkout')?.source ?? PIPELINE;
+
+function Gallery(): React.ReactElement {
   const [active, setActive] = useState(GALLERY[0]!);
   const example = EXAMPLES.find((e) => e.id === active) ?? EXAMPLES[0]!;
   return (
-    <Stack gap={4}>
-      <HStack gap={2} wrap justify="center" role="tablist" aria-label="Example diagrams">
+    <div>
+      <div className="lp-gallery-tabs" role="tablist" aria-label="Example diagrams">
         {GALLERY.map((id) => {
           const e = EXAMPLES.find((x) => x.id === id);
           return (
-            <Button
-              key={id}
-              size="sm"
-              role="tab"
-              aria-selected={id === active}
-              variant={id === active ? 'primary' : 'ghost'}
-              onClick={() => setActive(id)}
-              contract={{ id: 'example-picker', intent: 'apply-filter', description: 'Show a different example diagram' }}
-            >
+            <button key={id} type="button" role="tab" aria-selected={id === active} onClick={() => setActive(id)}>
               {e?.title ?? id}
-            </Button>
+            </button>
           );
         })}
-      </HStack>
-      <Card variant="elevated" padding="lg">
-        <div className="stage">
-          <pre className="code" aria-label="Diagram source">{example.source}</pre>
-          <VhyxChart key={active} source={example.source} autoplay loop controls aria-label={example.title} />
+      </div>
+      <div className="lp-gallery">
+        <pre aria-label="Diagram source">{example.source}</pre>
+        <div>
+          <VhyxChart key={active} source={example.source} autoplay loop layout="plain" aria-label={example.title} />
         </div>
-      </Card>
-      <Text size="sm" tone="subtle" align="center">{example.description}</Text>
-    </Stack>
+      </div>
+      <p className="lp-caption">{example.description}</p>
+    </div>
   );
 }
 
+const FAMILY = [
+  { lib: 'ui', name: 'VhyxUI', role: 'Components', text: 'Accessible React components with agent contracts built in.', href: VHYXUI, current: false },
+  { lib: 'seal', name: 'VhyxSeal', role: 'Agent contracts', text: 'The contract layer that tells AI agents what your UI does — and when to ask a person.', href: VHYXSEAL, current: false },
+  { lib: 'chart', name: 'VhyxChart', role: 'Diagrams', text: 'Text-defined diagrams that animate — in docs, READMEs, VS Code and React.', href: '/', current: true },
+] as const;
+
 export default function Home() {
   return (
-    <VhyxUIProvider theme="system">
-      <MarketingLayout
-        navbar={{
-          brand: <b>VhyxChart</b>,
-          links: [
-            { label: 'Examples', href: '#examples' },
-            { label: 'How it works', href: '#how' },
-            { label: 'Use it', href: '#use' },
-            { label: 'Docs', href: DOCS, external: true },
-            { label: 'Playground', href: PLAYGROUND, external: true },
-            { label: 'GitHub', href: GITHUB, external: true },
-          ],
-          actions: (
-            <Button size="sm" asChild contract={{ id: 'get-started', intent: 'navigate', description: 'Open the VhyxChart documentation' }}>
-              <a href={GET_STARTED}>Get started</a>
-            </Button>
-          ),
-        }}
-        footer={{
-          brand: 'VhyxChart',
-          tagline: <>Diagrams that move. MIT licensed, by <a href={VHYXARA} className="brand-link">Vhyxara</a>.</>,
-          columns: [
-            { title: 'Learn', links: [{ label: 'Documentation', href: DOCS }, { label: 'Examples', href: EXAMPLES_DOCS }, { label: 'React', href: REACT_DOCS }, { label: 'Playground', href: PLAYGROUND }] },
-            { title: 'Project', links: [{ label: 'npm', href: NPM }, { label: 'VS Code Marketplace', href: MARKETPLACE }, { label: 'Open VSX', href: OPENVSX }, { label: 'GitHub', href: GITHUB }] },
-            { title: 'Family', links: [{ label: 'VhyxUI — components', href: VHYXUI }, { label: 'VhyxSeal — agent contracts', href: VHYXSEAL }] },
-          ],
-          legal: <>© 2026 <a href={VHYXARA} className="brand-link">Vhyxara</a></>,
-        }}
-      >
-        <Hero
-          eyebrow="Text-first · ~30 KB · animated SVG for GitHub"
-          title="Diagrams that move."
-          description="Write architecture, flows, sequences and algorithms as plain text. Add a scenario and watch requests travel, services change state and values sort — in docs, READMEs, VS Code and React."
-          actions={[
-            { label: 'Get started', href: GET_STARTED },
-            { label: 'Open playground', href: PLAYGROUND, variant: 'outline' },
-          ]}
-        />
+    <VhyxUIProvider>
+      <SiteHeader
+        brand="VhyxChart"
+        mark={MARK}
+        current="chart"
+        family={{ ui: VHYXUI, seal: VHYXSEAL, chart: '/' }}
+        nav={[
+          { label: 'Examples', href: '#examples' },
+          { label: 'How it works', href: '#how' },
+          { label: 'Use it', href: '#use' },
+          { label: 'Docs', href: DOCS },
+          { label: 'Playground', href: PLAYGROUND },
+        ]}
+        github={GITHUB}
+        getStarted={GET_STARTED}
+      />
 
-        <Container size="md">
-          <div className="install">
-              <pre className="code">{INSTALL}</pre>
-            <Button variant="outline" onClick={copyInstall} contract={{ id: 'copy-install', intent: 'copy-text', description: 'Copy the npm install command' }}>
-              Copy
-            </Button>
+      <main id="vhyx-main">
+        <section className="lp-hero">
+          <div className="lp-aurora" aria-hidden="true"><span /><span /><span /></div>
+          <div className="lp-inner lp-hero-grid">
+            <div className="lp-hero-copy">
+              <a className="lp-pill" href={PLAYGROUND}><b>0.2</b> New player: header, controls toggle, themes <ArrowRightIcon size={14} /></a>
+              <h1 className="lp-title">
+                Diagrams that <span className="lp-gradient-text">move</span>.
+              </h1>
+              <p className="lp-lead">
+                Write architecture, flows, sequences and algorithms as text. Add a scenario and watch requests travel, services
+                fail and values sort — in docs, READMEs, VS Code and React.
+              </p>
+              <div className="lp-actions">
+                <Button size="lg" asChild><a href={GET_STARTED}>Get started</a></Button>
+                <Button size="lg" variant="outline" asChild><a href={PLAYGROUND}>Open playground</a></Button>
+              </div>
+              <div className="lp-install">
+                <span aria-hidden="true">$</span>
+                <code>{INSTALL}</code>
+                <button type="button" onClick={copyInstall}>Copy</button>
+              </div>
+            </div>
+            <Reveal delay={150}>
+              <div className="lp-frame">
+                <div className="lp-frame-inner">
+                  <div className="lp-frame-bar" aria-hidden="true"><i /><i /><i /><span>checkout.vhyx</span></div>
+                  <div className="lp-hero-chart">
+                    <VhyxChart source={HERO_SOURCE} autoplay loop layout="plain" aria-label="A checkout request travelling through services" />
+                  </div>
+                </div>
+              </div>
+            </Reveal>
           </div>
-        </Container>
-
-        <section id="examples" className="section" style={{ paddingTop: 0 }}>
-          <Container size="xl">
-            <Gallery />
-          </Container>
         </section>
 
-        <section id="how" className="section section--tint">
-          <Container size="xl">
-            <div className="split">
+        <div className="lp-inner">
+          <Reveal className="lp-stats">
+            <div className="lp-stat"><strong>~<CountUp to={30} /> KB</strong><span>gzipped, zero dependencies</span></div>
+            <div className="lp-stat"><strong><CountUp to={4} /></strong><span>diagram kinds: flow, sequence, state, arrays</span></div>
+            <div className="lp-stat"><strong><CountUp to={4} /></strong><span>places: GitHub, React, any page, VS Code</span></div>
+            <div className="lp-stat"><strong><CountUp to={0} /></strong><span>lines of JavaScript in README SVGs</span></div>
+          </Reveal>
+        </div>
+
+        <section id="examples" className="lp-section">
+          <div className="lp-inner">
+            <Reveal className="lp-head lp-head--center">
+              <span className="lp-eyebrow">Examples</span>
+              <h2 className="lp-h2">Text in, motion out</h2>
+              <p className="lp-sub">Pick an example: the source on the left is exactly what draws the diagram on the right.</p>
+            </Reveal>
+            <Reveal><Gallery /></Reveal>
+          </div>
+        </section>
+
+        <section id="how" className="lp-section">
+          <div className="lp-inner lp-split">
+            <Reveal>
               <Stack gap={4}>
-                <div className="tag"><Badge variant="info">How it works</Badge></div>
-                <Heading level={2}>Structure plus a story</Heading>
-                <Text tone="muted">
+                <span className="lp-eyebrow">How it works</span>
+                <h2 className="lp-h2">Structure plus a story</h2>
+                <p className="lp-sub">
                   The structure is ordinary diagram text: nodes, edges, groups. A <code>scenario</code> block adds the story —
                   tokens travel along edges, nodes become active, done or failed, notes appear. One diagram can hold many
                   scenarios: the happy path, the timeout, the retry.
-                </Text>
-                <Text tone="muted">
+                </p>
+                <p className="lp-sub">
                   Layout is computed once and never jumps. Every frame is a pure function of time, so scrubbing backwards is exact
                   and the same text renders the same everywhere.
-                </Text>
+                </p>
               </Stack>
-              <Card variant="elevated" padding="lg">
-                <VhyxChart source={PIPELINE} autoplay loop controls aria-label="From diagram text to an animated SVG in a GitHub README" />
-              </Card>
-            </div>
-          </Container>
+            </Reveal>
+            <Reveal delay={100}>
+              <VhyxChart source={PIPELINE} autoplay loop aria-label="From diagram text to an animated SVG in a GitHub README" />
+            </Reveal>
+          </div>
         </section>
 
-        <FeatureGrid
-          title="Built for real documentation"
-          features={[
-            { icon: <PlayIcon />, title: 'Scenarios', description: 'Many stories on one layout. Switch between success, failure and edge cases.' },
-            { icon: <CirclePlayIcon />, title: 'Play, step, scrub', description: 'Keyboard controls, reduced-motion support, pauses when off-screen.' },
-            { icon: <GitBranchIcon />, title: 'Animated on GitHub', description: 'SMIL-animated SVG plays inside README images — no JavaScript, no GIFs.' },
-            { icon: <PuzzleIcon />, title: 'Bring existing diagrams', description: 'Flowcharts, sequence and state diagrams you already have render unchanged.' },
-            { icon: <LifeBuoyIcon />, title: 'Helpful errors', description: 'Invalid text never crashes: you get the line, the problem and a suggestion.' },
-            { icon: <FeatherIcon />, title: 'Tiny and deterministic', description: '~30 KB gzipped, zero dependencies, identical output in Node and the browser.' },
-          ]}
-        />
-
-        <section className="section section--tint">
-          <Container size="xl">
-            <div className="section-head">
-              <Heading level={2}>When a static diagram isn’t enough</Heading>
-            </div>
-            <div className="uses">
-              {USES.map((u) => (
-                <Card key={u.title} variant="outline" padding="lg">
-                  <Stack gap={2}>
-                    <Text weight="semibold">{u.title}</Text>
-                    <Text size="sm" tone="muted">{u.text}</Text>
-                  </Stack>
-                </Card>
+        <section className="lp-section">
+          <div className="lp-inner">
+            <Reveal className="lp-head">
+              <span className="lp-eyebrow">Features</span>
+              <h2 className="lp-h2">Built for real documentation</h2>
+            </Reveal>
+            <div className="lp-bento">
+              {FEATURES.map((f, i) => (
+                <Reveal key={f.title} className="lp-tile lp-tile--2" delay={(i % 3) * 80}>
+                  <span className="lp-tile-icon">{f.icon}</span>
+                  <h3>{f.title}</h3>
+                  <p>{f.text}</p>
+                </Reveal>
               ))}
             </div>
-          </Container>
+          </div>
         </section>
 
-        <section id="use" className="section">
-          <Container size="xl">
-            <div className="section-head">
-              <Heading level={2}>Use it wherever you write</Heading>
-              <Text tone="muted">One text format, four ways to show it.</Text>
-            </div>
-            <div className="places">
-              {PLACES.map((p) => (
-                <Card key={p.title} variant="outline" padding="lg">
-                  <Stack gap={3}>
-                    <Text weight="semibold">{p.title}</Text>
-                    <pre className="code">{p.code}</pre>
-                    <Text size="sm" tone="muted">{p.text}</Text>
-                    {'link' in p && p.link ? <Text size="sm"><a href={p.link.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>{p.link.label} <ExternalLinkIcon size="0.9em" /></a></Text> : null}
-                  </Stack>
-                </Card>
+        <section className="lp-section">
+          <div className="lp-inner">
+            <Reveal className="lp-head">
+              <span className="lp-eyebrow">Use cases</span>
+              <h2 className="lp-h2">When a static diagram isn&apos;t enough</h2>
+            </Reveal>
+            <div className="lp-uses">
+              {USES.map((u, i) => (
+                <Reveal key={u.title} delay={i * 70}>
+                  <div className="lp-tile" style={{ minHeight: 0 }}><h3>{u.title}</h3><p>{u.text}</p></div>
+                </Reveal>
               ))}
             </div>
-          </Container>
+          </div>
         </section>
 
-        <section className="section section--tint">
-          <Container size="xl">
-            <div className="section-head">
-              <Heading level={2}>Part of the <a href={VHYXARA} className="brand-link">Vhyxara</a> family</Heading>
-              <Text tone="muted">This page is built with VhyxUI and publishes a VhyxSeal manifest for AI agents.</Text>
-            </div>
-            <div className="family">
-              {[
-                { name: 'VhyxUI', role: 'Components', text: 'Accessible React components with agent contracts built in.', href: VHYXUI },
-                { name: 'VhyxSeal', role: 'Agents', text: 'The contract layer that tells AI agents what your UI does.', href: VHYXSEAL },
-                { name: 'VhyxChart', role: 'Diagrams', text: 'Text-defined diagrams that animate.', href: DOCS },
-              ].map((p) => (
-                <Card key={p.name} variant="outline" padding="lg">
-                  <Stack gap={2}>
-                    <HStack gap={2} align="center"><Text weight="semibold">{p.name}</Text><Badge>{p.role}</Badge></HStack>
-                    <Text size="sm" tone="muted">{p.text}</Text>
-                    <Text size="sm"><a href={p.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>Learn more <ArrowRightIcon size="0.9em" /></a></Text>
-                  </Stack>
-                </Card>
+        <section id="use" className="lp-section">
+          <div className="lp-inner">
+            <Reveal className="lp-head">
+              <span className="lp-eyebrow">Everywhere you write</span>
+              <h2 className="lp-h2">One text format, four ways to show it</h2>
+            </Reveal>
+            <div className="lp-places">
+              {PLACES.map((p, i) => (
+                <Reveal key={p.title} delay={i * 70}>
+                  <div className="lp-place">
+                    <h3>{p.title}</h3>
+                    <pre>{p.code}</pre>
+                    <p>{p.text}</p>
+                    {'link' in p && p.link ? <a href={p.link.href}>{p.link.label} →</a> : null}
+                  </div>
+                </Reveal>
               ))}
             </div>
-          </Container>
+          </div>
         </section>
 
-        <Container size="xl" style={{ paddingBlock: 'var(--vhyx-space-16)' }}>
-          <CTASection
-            title="Make your next diagram move"
-            description="Write it as text, add a scenario, and ship it to your docs, README or app."
-            actions={[
-              { label: 'Get started', href: GET_STARTED },
-              { label: 'Open playground', href: PLAYGROUND, variant: 'outline' },
-              { label: 'Star on GitHub', href: GITHUB, variant: 'ghost' },
-            ]}
-          />
-        </Container>
-      </MarketingLayout>
+        <section className="lp-section">
+          <div className="lp-inner">
+            <Reveal className="lp-head lp-head--center">
+              <div className="lp-mark" aria-hidden="true" />
+              <h2 className="lp-h2">Part of the Vhyxara family</h2>
+              <p className="lp-sub">This page is built with VhyxUI and publishes a VhyxSeal manifest for AI agents.</p>
+            </Reveal>
+            <div className="lp-family-grid">
+              {FAMILY.map((f, i) => (
+                <Reveal key={f.lib} delay={i * 90}>
+                  <a className="lp-fam" data-lib={f.lib} href={f.href} aria-current={f.current ? 'page' : undefined}>
+                    <span className="lp-fam-name">{f.name}<small>{f.role}</small></span>
+                    <p>{f.text}</p>
+                    <span className="go">{f.current ? 'You are here' : `Visit ${f.name} →`}</span>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="lp-section">
+          <div className="lp-inner">
+            <Reveal className="lp-cta">
+              <h2 className="lp-h2">Make your next diagram move</h2>
+              <p className="lp-sub">Write it as text, add a scenario, and ship it to your docs, README or app.</p>
+              <div className="lp-actions" style={{ justifyContent: 'center' }}>
+                <Button size="lg" asChild><a href={GET_STARTED}>Get started</a></Button>
+                <Button size="lg" variant="outline" asChild><a href={PLAYGROUND}>Open playground</a></Button>
+                <Button size="lg" variant="ghost" asChild><a href={GITHUB}>Star on GitHub</a></Button>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      </main>
+
+      <div className="lp-inner">
+        <footer className="lp-footer">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320 }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontWeight: 700, color: 'var(--vhyx-color-text)', fontSize: 16 }}>
+              <span style={{ color: 'var(--lp-brand)', display: 'inline-flex' }}>{MARK}</span>VhyxChart
+            </span>
+            <span>Diagrams that move. MIT licensed, by <a href={VHYXARA}>Vhyxara</a>.</span>
+            <div className="lp-mark" aria-hidden="true" style={{ width: 120 }} />
+          </div>
+          <nav aria-label="Footer">
+            <div><strong>Learn</strong><a href={DOCS}>Documentation</a><a href={EXAMPLES_DOCS}>Examples</a><a href={REACT_DOCS}>React</a><a href={PLAYGROUND}>Playground</a></div>
+            <div><strong>Family</strong><a href={VHYXUI}>VhyxUI</a><a href={VHYXSEAL}>VhyxSeal</a><a href={VHYXARA}>Vhyxara</a></div>
+            <div><strong>Project</strong><a href={NPM}>npm</a><a href={MARKETPLACE}>VS Code Marketplace</a><a href={OPENVSX}>Open VSX</a><a href={GITHUB}>GitHub</a></div>
+          </nav>
+        </footer>
+      </div>
     </VhyxUIProvider>
   );
 }
