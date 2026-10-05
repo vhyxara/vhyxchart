@@ -101,7 +101,7 @@ export function ChartFrame({ toc = [], full = false, children }: ChartFrameProps
             ))}
           </aside>
           {menuOpen && <div className="ch-scrim" aria-hidden="true" onClick={() => { setMenuOpen(false); }} />}
-          <main id="vhyx-main" className="ch-main">
+          <main id="vhyx-main" className="ch-main atmo-page-glow">
             <article className="prose">{children}</article>
           </main>
           {toc.length > 0 && (

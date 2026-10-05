@@ -75,3 +75,17 @@ code, pre, kbd, samp { font-family: var(--vhyx-font-mono); }
 
 body { font-family: var(--vhyx-font-sans); background: var(--ch-bg); color: var(--ch-text); -webkit-font-smoothing: antialiased; }
 code, pre, kbd { font-family: var(--vhyx-font-mono); }
+
+/* ── Brand atmosphere mapping (styles/atmosphere.css and docs-home.css read these) ── */
+:root {
+  --atmo-brand: var(--ch-accent);
+  --atmo-brand-hover: var(--ch-accent-hover);
+  --atmo-on-brand: var(--ch-on-accent);
+  --atmo-surface: var(--ch-surface);
+  --atmo-border: var(--ch-border);
+  --atmo-border-strong: var(--ch-border-strong);
+  --atmo-text: var(--ch-text);
+  --atmo-muted: var(--ch-text-muted);
+  --atmo-bg: var(--ch-bg);
+}
+.dh .atmo-card p { color: var(--ch-text-subtle); }
