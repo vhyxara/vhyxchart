@@ -10,7 +10,7 @@
 import { createPlayer, type Player, type PlayerOptions } from './player.js';
 
 export * from './index.js';
-export { createPlayer, type Player, type PlayerOptions, type PlayerEvents } from './player.js';
+export { createPlayer, type Player, type PlayerOptions, type PlayerEvents, type PlayerSlot } from './player.js';
 
 const SELECTOR = 'pre > code.language-vhyx, pre > code.language-vhyxchart, pre.language-vhyx, pre.language-vhyxchart, .vhyxchart[data-source], div.vhyxchart:not([data-vc-mounted])';
 
@@ -40,7 +40,8 @@ export function autoRender(root: ParentNode = document, options: PlayerOptions &
 
 /**
  * Registers `<vhyx-chart>`: put diagram source inside the tag, or in a `src`
- * attribute pointing to a `.vhyx` file. Attributes: theme, autoplay, controls, scenario.
+ * attribute pointing to a `.vhyx` file. Attributes: theme, autoplay, controls, controls-toggle,
+ * controls-position (top | bottom), header, chart-title, layout (card | plain), scenario.
  *
  *   <vhyx-chart theme="dark">
  *     flowchart LR
@@ -53,7 +54,7 @@ export function defineElement(tagName = 'vhyx-chart'): void {
     private player: Player | null = null;
     private source = '';
     static get observedAttributes(): string[] {
-      return ['theme', 'src', 'scenario'];
+      return ['theme', 'src', 'scenario', 'header', 'controls', 'controls-toggle', 'controls-position', 'chart-title', 'layout'];
     }
     connectedCallback(): void {
       this.source = this.source || this.textContent || '';
@@ -89,11 +90,21 @@ export function defineElement(tagName = 'vhyx-chart'): void {
       const flag = (name: string): boolean | undefined => (this.hasAttribute(name) ? this.getAttribute(name) !== 'false' : undefined);
       const autoplay = flag('autoplay');
       const controls = flag('controls');
+      const controlsToggle = flag('controls-toggle');
+      const header = flag('header');
+      const position = this.getAttribute('controls-position');
+      const layout = this.getAttribute('layout');
+      const title = this.getAttribute('chart-title');
       this.player = createPlayer(this, source, {
         ...(theme === 'light' || theme === 'dark' || theme === 'auto' ? { theme } : {}),
         ...(scenario !== null ? { scenario: Number(scenario) } : {}),
         ...(autoplay !== undefined ? { autoplay } : {}),
         ...(controls !== undefined ? { controls } : {}),
+        ...(controlsToggle !== undefined ? { controlsToggle } : {}),
+        ...(header !== undefined ? { header } : {}),
+        ...(position === 'top' || position === 'bottom' ? { controlsPosition: position } : {}),
+        ...(layout === 'card' || layout === 'plain' ? { layout } : {}),
+        ...(title !== null ? { title } : {}),
       });
     }
   }

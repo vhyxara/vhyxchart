@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import type { Player, PlayerOptions } from '@vhyxchart/core/browser';
+import type { Player, PlayerOptions, PlayerSlot } from '@vhyxchart/core/browser';
 import { useVhyxChart, type VhyxChartState } from './useVhyxChart.js';
 
 /** Props for {@link VhyxChart}. */
-export interface VhyxChartProps extends PlayerOptions {
+export interface VhyxChartProps extends Omit<PlayerOptions, 'styles'> {
   /** Diagram source text. Alternatively pass it as children. */
   source?: string;
   children?: string;
@@ -17,6 +17,13 @@ export interface VhyxChartProps extends PlayerOptions {
   onReady?: (player: Player) => void;
   /** Called whenever playback state changes. */
   onStateChange?: (state: VhyxChartState) => void;
+  /**
+   * Called when the controller is shown or hidden from the header switch. Pair with `controls`
+   * to keep visibility in your own state.
+   */
+  onControlsChange?: (visible: boolean) => void;
+  /** Inline styles per part of the player, e.g. `{ stage: { padding: 24 }, controls: { order: -1 } }`. */
+  styles?: Partial<Record<PlayerSlot, React.CSSProperties>>;
 }
 
 /**
@@ -31,9 +38,25 @@ export interface VhyxChartProps extends PlayerOptions {
  *     db is done
  * `}</VhyxChart>
  */
-export function VhyxChart({ source, children, className, style, onReady, onStateChange, 'aria-label': ariaLabel, ...options }: VhyxChartProps): React.ReactElement {
+export function VhyxChart({
+  source,
+  children,
+  className,
+  style,
+  onReady,
+  onStateChange,
+  onControlsChange,
+  styles,
+  'aria-label': ariaLabel,
+  ...options
+}: VhyxChartProps): React.ReactElement {
   const text = dedent(source ?? children ?? '');
-  const { ref, player, state } = useVhyxChart(text, options);
+  const { ref, player, state } = useVhyxChart(text, { ...options, ...(styles ? { styles: toCssText(styles) } : {}) });
+
+  useEffect(() => {
+    if (!player || !onControlsChange) return undefined;
+    return player.on('controls', onControlsChange);
+  }, [player, onControlsChange]);
 
   useEffect(() => {
     if (player) onReady?.(player);
@@ -47,6 +70,25 @@ export function VhyxChart({ source, children, className, style, onReady, onState
 
   return <div ref={ref} className={className} style={style} role="figure" aria-label={ariaLabel} data-vhyxchart="" />;
 }
+
+/** Turns React style objects into CSS text for the player's per-part styles. */
+function toCssText(styles: Partial<Record<PlayerSlot, React.CSSProperties>>): Partial<Record<PlayerSlot, string>> {
+  const out: Partial<Record<PlayerSlot, string>> = {};
+  for (const [slot, css] of Object.entries(styles) as Array<[PlayerSlot, React.CSSProperties | undefined]>) {
+    if (!css) continue;
+    out[slot] = Object.entries(css)
+      .filter(([, v]) => v !== undefined && v !== null && v !== '')
+      .map(([k, v]) => {
+        const prop = k.startsWith('--') ? k : k.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+        const value = typeof v === 'number' && !UNITLESS.has(k) ? `${v}px` : String(v);
+        return `${prop}:${value}`;
+      })
+      .join(';');
+  }
+  return out;
+}
+
+const UNITLESS = new Set(['opacity', 'zIndex', 'flex', 'flexGrow', 'flexShrink', 'order', 'fontWeight', 'lineHeight', 'zoom']);
 
 /** Removes common indentation so template literals can be indented in JSX. */
 export function dedent(text: string): string {

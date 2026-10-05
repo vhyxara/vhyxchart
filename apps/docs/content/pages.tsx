@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckIcon, XIcon } from '@vhyxui/icons';
 import { EXAMPLES } from '@vhyxchart/examples';
-import { Code, Example, PLAYGROUND } from '../components/ui';
+import { Code, ControlledDemo, Demo, Example, PLAYGROUND } from '../components/ui';
 
 export interface DocPage {
   slug: string;
@@ -25,6 +25,28 @@ scenario Save a profile
   api -> app : 200
   api is done
   note app : Saved`;
+
+const DEMO = `---
+title: Save a profile
+---
+flowchart LR
+  user([User]) --> app[Web app] --> api[API] --> db[(Database)]
+
+scenario Happy path
+  user -> app : click Save
+  app -> api : PATCH /me
+  api -> db : UPDATE
+  db is done
+  api -> app : 200
+  api is done
+
+scenario Database down
+  user -> app : click Save
+  app -> api : PATCH /me
+  api -> db : UPDATE
+  db is error
+  api -> app : 503
+  api is warn`;
 
 export const PAGES: DocPage[] = [
   {
@@ -322,7 +344,7 @@ code --install-extension packages/vscode/vhyxchart-vscode-0.1.1.vsix`}</Code>
     slug: 'react',
     title: 'React',
     description: 'Component, hook, and server rendering.',
-    toc: [{ id: 'component', label: 'Component' }, { id: 'hook', label: 'Custom controls' }, { id: 'server', label: 'Server components' }],
+    toc: [{ id: 'component', label: 'Component' }, { id: 'player', label: 'Header and controller' }, { id: 'styling', label: 'Styling and layout' }, { id: 'hook', label: 'Custom controls' }, { id: 'server', label: 'Server components' }],
     body: () => (
       <>
         <h1>React</h1>
@@ -335,8 +357,53 @@ code --install-extension packages/vscode/vhyxchart-vscode-0.1.1.vsix`}</Code>
   scenario Go
     a -> b
 \`}</VhyxChart>`}</Code>
+        <h2 id="player">Header and controller</h2>
+        <p>Every chart has a header (title, step counter, scenario tabs) and a controller (play, steps, timeline, speed). Readers show or hide the controller with the <strong>Controls</strong> switch in the header; you decide the default, or take over entirely.</p>
+        <Demo source={DEMO} code={`<VhyxChart source={source} />  // controller open, reader can hide it`} />
+        <Demo source={DEMO} controls={false} code={`<VhyxChart source={source} controls={false} />  // starts closed, reader can open it`} />
+        <h3>Your app decides</h3>
+        <p>Pass <code>controlsToggle={'{false}'}</code> to hide the switch, and drive <code>controls</code> from your own state. <code>onControlsChange</code> tells you when a reader flips the switch.</p>
+        <ControlledDemo source={DEMO} />
+        <Code>{`const [open, setOpen] = useState(false);
+<VhyxChart source={source} controls={open} controlsToggle={false} />
+<button onClick={() => setOpen((o) => !o)}>Controls</button>`}</Code>
+        <table className="cmp">
+          <thead><tr><th>Prop</th><th>Default</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><code>controls</code></td><td>diagram setting (on)</td><td>Show the controller. Changing it later opens or closes it without restarting playback.</td></tr>
+            <tr><td><code>controlsToggle</code></td><td><code>true</code></td><td>Show the Controls switch in the header.</td></tr>
+            <tr><td><code>onControlsChange</code></td><td>—</td><td>Called with <code>true</code>/<code>false</code> when the controller opens or closes.</td></tr>
+            <tr><td><code>header</code></td><td><code>true</code></td><td>Show the header.</td></tr>
+            <tr><td><code>title</code></td><td>diagram title</td><td>Header title.</td></tr>
+            <tr><td><code>controlsPosition</code></td><td><code>&apos;bottom&apos;</code></td><td><code>&apos;top&apos;</code> puts the controller above the diagram.</td></tr>
+            <tr><td><code>layout</code></td><td><code>&apos;card&apos;</code></td><td><code>&apos;plain&apos;</code> drops the frame to sit inside your own container.</td></tr>
+            <tr><td><code>classNames</code> / <code>styles</code></td><td>—</td><td>Class names or inline styles per part: <code>root</code>, <code>header</code>, <code>title</code>, <code>stage</code>, <code>caption</code>, <code>controls</code>, <code>button</code>, <code>play</code>, <code>progress</code>, <code>speed</code>, <code>scenarios</code>, <code>toggle</code>.</td></tr>
+          </tbody>
+        </table>
+        <p>Keyboard: <code>Space</code> plays or pauses, <code>←</code>/<code>→</code> step, <code>C</code> shows or hides the controller.</p>
+        <h2 id="styling">Styling and layout</h2>
+        <p>Theme with CSS variables on <code>.vc-player</code> (or any ancestor), or override parts with <code>classNames</code> and <code>styles</code>.</p>
+        <Demo
+          source={DEMO}
+          layout="plain"
+          controlsPosition="top"
+          header={false}
+          styles={{ root: { '--vc-accent': '#a855f7', '--vc-accent-soft': 'rgba(168,85,247,.16)' } as React.CSSProperties }}
+          code={`<VhyxChart
+  source={source}
+  layout="plain"            // no frame
+  controlsPosition="top"    // controller above the diagram
+  header={false}
+  styles={{ root: { '--vc-accent': '#a855f7' } }}
+/>`}
+        />
+        <Code>{`.vc-player {
+  --vc-accent: #0ea5e9;   /* play button, progress, active states */
+  --vc-radius: 12px;
+  --vc-font: 'Inter', sans-serif;
+}`}</Code>
         <h2 id="hook">Custom controls (headless)</h2>
-        <Code>{`const { ref, player, state } = useVhyxChart(source, { controls: false });
+        <Code>{`const { ref, player, state } = useVhyxChart(source, { controls: false, controlsToggle: false });
 return (
   <>
     <div ref={ref} />
@@ -371,6 +438,16 @@ export default function Page() {
     a --> b
 </vhyx-chart>
 <vhyx-chart src="/diagrams/checkout.vhyx"></vhyx-chart>`}</Code>
+        <p>The element takes the same player options as attributes:</p>
+        <Code>{`<vhyx-chart
+  controls="false"            <!-- start with the controller closed -->
+  controls-toggle="false"     <!-- hide the header switch -->
+  controls-position="top"     <!-- top | bottom -->
+  header="false"              <!-- hide the header -->
+  chart-title="Checkout"      <!-- header title -->
+  layout="plain"              <!-- card | plain -->
+  src="/diagrams/checkout.vhyx"></vhyx-chart>`}</Code>
+        <p>From script: <code>el.chart.setControlsVisible(true)</code>, and <code>el.chart.on(&apos;controls&apos;, (open) =&gt; …)</code>.</p>
       </>
     ),
   },

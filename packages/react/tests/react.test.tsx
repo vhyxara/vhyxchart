@@ -30,7 +30,7 @@ describe('<VhyxChart>', () => {
 
 describe('useVhyxChart', () => {
   function Custom(): React.ReactElement {
-    const { ref, player, state } = useVhyxChart(SRC, { autoplay: false, controls: false });
+    const { ref, player, state } = useVhyxChart(SRC, { autoplay: false, controls: false, controlsToggle: false });
     return (
       <div>
         <div ref={ref} />
@@ -43,7 +43,9 @@ describe('useVhyxChart', () => {
   it('exposes player and reactive state for custom controls', async () => {
     const { container, getByText } = render(<Custom />);
     await waitFor(() => expect(container.querySelector('output')?.textContent).toBe('s|0'));
-    expect((container.querySelector('[role="toolbar"]') as HTMLElement).style.display).toBe('none');
+    // Custom controls: the built-in controller stays closed and its header switch is hidden.
+    expect((container.querySelector('.vc-controls') as HTMLElement).dataset['open']).toBe('false');
+    expect((container.querySelector('.vc-toggle') as HTMLElement).style.display).toBe('none');
     act(() => getByText('next').click());
     await waitFor(() => expect(container.querySelector('output')?.textContent).not.toBe('s|0'));
   });
