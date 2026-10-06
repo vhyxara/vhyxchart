@@ -59,3 +59,13 @@
   .pg-editor { flex: none; height: 45vh; min-height: 280px; }
   .pg-stage { padding: 16px; }
 }
+
+/* ── Brand atmosphere (quiet): sky glow behind the preview, glowing top edge on the chart card ── */
+.pg-pane--preview .pg-stage {
+  background-image:
+    radial-gradient(60% 45% at 50% 0%, color-mix(in srgb, var(--atmo-brand) 9%, transparent), transparent 70%),
+    radial-gradient(color-mix(in srgb, var(--ch-border-strong) 70%, transparent) 1px, transparent 1px);
+  background-size: auto, 18px 18px;
+}
+.pg-stage .vc-player { position: relative; box-shadow: 0 30px 70px -40px var(--atmo-glow); }
+.pg-stage .vc-player::after { content: ''; position: absolute; left: 24px; right: 24px; top: -1px; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--atmo-brand) 70%, transparent), transparent); }

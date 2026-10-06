@@ -1,109 +1,144 @@
-'use client';
-
-import { CirclePlayIcon, FeatherIcon, GitBranchIcon, LaptopIcon, PlayIcon, PuzzleIcon } from '@vhyxui/icons';
-import React, { useState } from 'react';
+import {
+  ArrowRightIcon,
+  BrushIcon,
+  CirclePlayIcon,
+  CodeIcon,
+  GitBranchIcon,
+  LayoutGridIcon,
+  NetworkIcon,
+  PuzzleIcon,
+  TerminalIcon,
+  WorkflowIcon,
+} from '@vhyxui/icons';
+import React from 'react';
 import Link from 'next/link';
-import { VhyxChart } from '@vhyxchart/react';
-import { EXAMPLES } from '@vhyxchart/examples';
 import { ChartFrame } from '../components/ChartFrame';
-import { GITHUB, PLAYGROUND, VHYXARA, VHYXSEAL, VHYXUI } from '../components/links';
+import { GITHUB, PLAYGROUND, SITE, VHYXARA, VHYXSEAL, VHYXUI } from '../components/links';
 
-const SHOWCASE = ['checkout', 'oauth', 'agent', 'bubble', 'pipeline'];
+const INSTALL = 'pnpm add @vhyxchart/react';
 
-const FEATURES = [
-  { icon: <PlayIcon size={20} />, title: 'Scenarios', text: 'Tokens travel edges, nodes change state, notes appear. Many scenarios per diagram, one layout.' },
-  { icon: <CirclePlayIcon size={20} />, title: 'Play, step, scrub', text: 'Every frame is a pure function of time, so scrubbing backwards is exact.' },
-  { icon: <GitBranchIcon size={20} />, title: 'Animated on GitHub', text: 'Export SMIL-animated SVG that plays inside README images. No JavaScript.' },
-  { icon: <PuzzleIcon size={20} />, title: 'Bring existing diagrams', text: 'Flowcharts, sequence and state diagrams you already have render unchanged.' },
-  { icon: <LaptopIcon size={20} />, title: 'VS Code live preview', text: 'Fences animate in the Markdown preview; .vhyx files preview as you type.' },
-  { icon: <FeatherIcon size={20} />, title: 'Tiny and deterministic', text: '~30 KB gzipped, zero dependencies, same output in Node and the browser.' },
+const STEPS = [
+  { n: '01', title: 'Get started', text: 'Install, render your first diagram and press play — in about a minute.', href: '/docs/getting-started' },
+  { n: '02', title: 'Add a scenario', text: 'Tokens travel edges, nodes change state and notes appear, all from text.', href: '/docs/scenarios' },
+  { n: '03', title: 'Ship it anywhere', text: 'GitHub READMEs, docs sites, VS Code, React or any page with one script tag.', href: '/docs/markdown' },
 ];
 
-const RUNS = [
-  { href: '/docs/markdown', code: '```vhyx', text: 'Markdown fences in docs sites and GitHub READMEs' },
-  { href: '/docs/vscode', code: 'code --install-extension', text: 'Live preview in VS Code as you type' },
-  { href: '/docs/react', code: '<VhyxChart />', text: 'React component, headless hook and server render' },
-  { href: '/docs/html', code: '<vhyx-chart>', text: 'Any page with one script tag' },
+const SECTIONS = [
+  { icon: <WorkflowIcon />, title: 'Flowcharts & architecture', text: 'Nodes, edges, groups and shapes for systems and services.', href: '/docs/flowchart' },
+  { icon: <CirclePlayIcon />, title: 'Scenarios', text: 'The timeline: tokens, states, notes and many stories on one layout.', href: '/docs/scenarios' },
+  { icon: <NetworkIcon />, title: 'Sequence diagrams', text: 'Messages between participants, played one at a time.', href: '/docs/sequence' },
+  { icon: <GitBranchIcon />, title: 'State diagrams', text: 'States and transitions that light up as the machine runs.', href: '/docs/state' },
+  { icon: <LayoutGridIcon />, title: 'Arrays & algorithms', text: 'Swaps, pointers and comparisons for teaching and explaining code.', href: '/docs/arrays' },
+  { icon: <BrushIcon />, title: 'Styling & themes', text: 'Themes, CSS variables, player options and per-part classes.', href: '/docs/styling' },
+  { icon: <CodeIcon />, title: 'React', text: 'The player component, a headless hook and server rendering.', href: '/docs/react' },
+  { icon: <TerminalIcon />, title: 'CLI', text: 'Render animated or static SVG for READMEs and CI.', href: '/docs/cli' },
+  { icon: <PuzzleIcon />, title: 'Bring existing diagrams', text: 'Flowchart, sequence and state text you already have renders unchanged.', href: '/docs/existing-diagrams' },
 ];
 
+const PLACES = [
+  { label: 'Markdown & GitHub', href: '/docs/markdown' },
+  { label: 'VS Code', href: '/docs/vscode' },
+  { label: 'React', href: '/docs/react' },
+  { label: 'Any website', href: '/docs/html' },
+  { label: 'JavaScript API', href: '/docs/api' },
+  { label: 'Examples', href: '/docs/examples' },
+];
+
+/** Docs start page: where to begin and a map of the docs. The pitch and the gallery live at vhyxchart.com. */
 export default function Home(): React.ReactElement {
-  const [active, setActive] = useState(SHOWCASE[0] ?? 'checkout');
-  const example = EXAMPLES.find((e) => e.id === active) ?? EXAMPLES[0];
-
   return (
     <ChartFrame full>
-      <section className="ch-hero ch-grid-bg">
-        <div className="ch-home-inner ch-hero-copy">
-          <span className="ch-eyebrow">Text-first · 30 KB · animated SVG for GitHub</span>
-          <h1 className="ch-hero-title">Diagrams that move.</h1>
-          <p className="ch-hero-lead">
-            Write architecture, flows, sequences and algorithms as text. Add a scenario and watch requests travel,
-            services fail and values sort — in docs, READMEs, VS Code and React.
-          </p>
-          <div className="ch-actions">
-            <Link href="/docs/getting-started" className="ch-btn ch-btn--primary">Get started</Link>
-            <a href={PLAYGROUND} className="ch-btn ch-btn--ghost">Open playground</a>
-            <span className="ch-install"><span aria-hidden="true">$</span>pnpm add @vhyxchart/react</span>
-          </div>
-        </div>
-
-        <div className="ch-home-inner">
-          <div className="ch-showcase">
-            <div className="ch-showcase-tabs" role="tablist" aria-label="Showcase">
-              {SHOWCASE.map((id) => {
-                const e = EXAMPLES.find((x) => x.id === id);
-                return e ? (
-                  <button key={id} type="button" role="tab" aria-selected={id === active} className="ch-tab" onClick={() => { setActive(id); }}>
-                    {e.title}
-                  </button>
-                ) : null;
-              })}
+      <div className="dh">
+        <section className="dh-hero atmo-hero">
+          <div className="atmo-aurora" aria-hidden="true"><span /><span /><span /></div>
+          <div className="dh-inner dh-hero-inner">
+            <Link href="/docs/styling" className="dh-pill"><b>0.2</b> Player header, controls toggle and themes <ArrowRightIcon size="1em" /></Link>
+            <span className="atmo-eyebrow">Documentation</span>
+            <h1 className="dh-title">Learn VhyxChart, <span className="atmo-gradient-text">one scenario at a time</span>.</h1>
+            <p className="dh-lead">
+              Write a diagram as text, add a scenario that plays it, and put it in your README, docs, editor or app.
+            </p>
+            <div className="dh-actions">
+              <Link href="/docs/getting-started" className="dh-btn dh-btn--primary">Get started</Link>
+              <a href={PLAYGROUND} className="dh-btn dh-btn--outline">Open playground</a>
+              <span className="dh-install">
+                <span className="dh-install-prompt" aria-hidden="true">$</span>
+                <code>{INSTALL}</code>
+              </span>
             </div>
-            <div className="ch-showcase-body" role="tabpanel">
-              <pre className="ch-showcase-source">{example?.source}</pre>
-              <div className="ch-showcase-stage"><VhyxChart key={active} source={example?.source ?? ''} autoplay controls /></div>
+          </div>
+        </section>
+
+        <section className="dh-section">
+          <div className="dh-inner">
+            <h2 className="dh-h2">Start here</h2>
+            <div className="dh-steps">
+              {STEPS.map((s) => (
+                <Link key={s.n} href={s.href} className="atmo-card">
+                  <span className="dh-step-n">{s.n}</span>
+                  <strong>{s.title}</strong>
+                  <p>{s.text}</p>
+                  <span className="atmo-card-more">Read <ArrowRightIcon size="1em" /></span>
+                </Link>
+              ))}
             </div>
-            <p className="ch-showcase-caption">{example?.description}</p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="ch-section">
-        <div className="ch-home-inner">
-          <div className="ch-section-head">
-            <h2 className="ch-h2">Text in, motion out</h2>
-            <p className="ch-section-lead">Familiar diagram syntax, plus a timeline. Nothing to draw by hand.</p>
+        <section className="dh-section">
+          <div className="dh-inner">
+            <h2 className="dh-h2">Explore the docs</h2>
+            <div className="dh-grid">
+              {SECTIONS.map((s) => (
+                <Link key={s.title} href={s.href} className="atmo-card">
+                  <span className="atmo-card-icon" aria-hidden="true">{s.icon}</span>
+                  <strong>{s.title}</strong>
+                  <p>{s.text}</p>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="ch-features">
-            {FEATURES.map((f) => (
-              <div key={f.title} className="ch-feature">{f.icon}<strong>{f.title}</strong><p>{f.text}</p></div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="ch-section" style={{ paddingTop: 0 }}>
-        <div className="ch-home-inner">
-          <div className="ch-section-head">
-            <h2 className="ch-h2">Runs where your docs live</h2>
-            <p className="ch-section-lead">The same text renders everywhere, with the same output.</p>
+        <section className="dh-section">
+          <div className="dh-inner">
+            <div className="dh-heading-row">
+              <h2 className="dh-h2">Use it where you write</h2>
+              <Link href="/docs/why" className="dh-link">Why VhyxChart <ArrowRightIcon size="1em" /></Link>
+            </div>
+            <div className="dh-chips">
+              {PLACES.map((p) => <Link key={p.href} href={p.href} className="dh-chip">{p.label}</Link>)}
+            </div>
           </div>
-          <div className="ch-runs">
-            {RUNS.map((r) => (
-              <Link key={r.href} href={r.href} className="ch-run"><code>{r.code}</code><span>{r.text}</span></Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <footer className="ch-footer">
-        <span>A <a href={VHYXARA}>Vhyxara</a> project · MIT licensed</span>
-        <span className="ch-footer-links">
-          <a href={VHYXUI}>VhyxUI</a>
-          <a href={VHYXSEAL}>VhyxSeal</a>
-          <a href={GITHUB}>GitHub</a>
-        </span>
-      </footer>
+        <section className="dh-section">
+          <div className="dh-inner">
+            <div className="atmo-card dh-banner">
+              <div>
+                <strong>Edit a diagram and watch it play</strong>
+                <p>The playground has every example, a live editor and exports for animated SVG, static SVG and Markdown.</p>
+              </div>
+              <div className="dh-banner-actions">
+                <a href={PLAYGROUND} className="dh-btn dh-btn--primary">Open playground</a>
+                <a href={SITE} className="dh-btn dh-btn--ghost">About VhyxChart</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="dh-footer">
+          <span className="atmo-family-bar" aria-hidden="true" />
+          <div className="dh-footer-row">
+            <span>A <a href={VHYXARA}>Vhyxara</a> project · MIT licensed</span>
+            <span className="dh-footer-links">
+              <a href={VHYXUI}>VhyxUI</a>
+              <a href={VHYXSEAL}>VhyxSeal</a>
+              <a href={GITHUB}>GitHub</a>
+            </span>
+          </div>
+        </footer>
+      </div>
     </ChartFrame>
   );
 }

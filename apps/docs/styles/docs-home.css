@@ -1,0 +1,94 @@
+/*
+ * Docs start page (the landing page lives on the apex domain). Same file in the VhyxSeal and VhyxChart docs;
+ * colours come from the --atmo-* variables each site maps in its palette file. Look comes from atmosphere.css.
+ */
+.dh { display: flex; flex-direction: column; }
+.dh-inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.dh-section { padding: 0 0 64px; }
+
+.dh-hero { padding: 80px 0 56px; }
+.dh-hero-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.dh-pill {
+  display: inline-flex; align-items: center; gap: 10px; padding: 5px 14px 5px 5px; border-radius: 999px;
+  border: 1px solid var(--atmo-border); background: color-mix(in srgb, var(--atmo-surface) 80%, transparent);
+  font-size: 13px; color: var(--atmo-muted); text-decoration: none; transition: border-color .2s var(--atmo-ease);
+}
+.dh-pill:hover { border-color: color-mix(in srgb, var(--atmo-brand) 50%, var(--atmo-border)); }
+.dh-pill b { padding: 2px 8px; border-radius: 999px; background: var(--atmo-soft); color: var(--atmo-brand); font-weight: 600; font-size: 12px; }
+.dh-title { margin: 0; max-width: 48rem; font-size: clamp(2.5rem, 1.4rem + 3.4vw, 4rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em; color: var(--atmo-text); }
+.dh-lead { margin: 0; max-width: 38rem; font-size: 18px; line-height: 1.6; color: var(--atmo-muted); }
+.dh-actions { align-self: stretch; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; }
+
+.dh-search {
+  display: inline-flex; align-items: center; gap: 12px; width: min(420px, 100%); height: 48px; padding: 0 10px 0 16px;
+  border: 1px solid var(--atmo-border-strong, var(--atmo-border)); border-radius: 12px; background: var(--atmo-surface);
+  color: var(--atmo-muted); font: inherit; font-size: 15px; cursor: pointer; box-shadow: 0 16px 40px -28px var(--atmo-glow);
+  transition: border-color .2s var(--atmo-ease), box-shadow .2s var(--atmo-ease);
+}
+.dh-search:hover { border-color: color-mix(in srgb, var(--atmo-brand) 55%, var(--atmo-border)); box-shadow: 0 18px 48px -26px var(--atmo-glow); }
+.dh-search:focus-visible { outline: 2px solid var(--atmo-brand); outline-offset: 2px; }
+.dh-search span { flex: 1; text-align: left; }
+.dh-search kbd { padding: 3px 7px; border: 1px solid var(--atmo-border); border-radius: 6px; font-family: var(--vhyx-font-mono, ui-monospace, monospace); font-size: 12px; color: var(--atmo-muted); }
+
+.dh-install {
+  display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 8px 0 14px; max-width: 100%; overflow-x: auto;
+  border: 1px solid var(--atmo-border); border-radius: 12px; background: var(--atmo-surface);
+  font-family: var(--vhyx-font-mono, ui-monospace, monospace); font-size: 13px; color: var(--atmo-text);
+}
+.dh-install code { font-family: inherit; white-space: nowrap; background: none; border: 0; padding: 0; }
+.dh-install-prompt { color: var(--atmo-muted); }
+
+.dh-heading-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+.dh-h2 { margin: 0 0 20px; font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.1rem); font-weight: 700; letter-spacing: -0.025em; color: var(--atmo-text); }
+.dh-heading-row .dh-h2 { margin: 0; }
+.dh-link { display: inline-flex; align-items: center; gap: 6px; color: var(--atmo-brand); font-weight: 600; font-size: 15px; text-decoration: none; }
+
+.dh-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.dh-step-n { font-family: var(--vhyx-font-mono, ui-monospace, monospace); font-size: 13px; color: var(--atmo-brand); }
+.dh-steps .atmo-card strong { font-size: 18px; }
+.dh-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+
+.dh-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.dh-chip {
+  padding: 8px 14px; border-radius: 999px; border: 1px solid var(--atmo-border); background: var(--atmo-surface);
+  color: var(--atmo-muted); font-size: 14px; text-decoration: none;
+  transition: border-color .2s var(--atmo-ease), color .2s var(--atmo-ease), background-color .2s var(--atmo-ease);
+}
+.dh-chip:hover { border-color: color-mix(in srgb, var(--atmo-brand) 50%, var(--atmo-border)); color: var(--atmo-text); background: var(--atmo-soft); }
+
+.dh-banner { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; padding: 32px; }
+.dh-banner strong { display: block; margin-bottom: 6px; font-size: 22px; letter-spacing: -0.02em; }
+.dh-banner p { max-width: 36rem; }
+.dh-banner-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; }
+.dh-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 10px;
+  font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid transparent; white-space: nowrap;
+  transition: background-color .2s var(--atmo-ease), border-color .2s var(--atmo-ease);
+}
+.dh-btn--primary { background: var(--atmo-brand); color: var(--atmo-on-brand); }
+.dh-btn--primary:hover { background: var(--atmo-brand-hover, var(--atmo-brand)); }
+.dh-btn--outline { border-color: color-mix(in srgb, var(--atmo-brand) 60%, var(--atmo-border)); color: var(--atmo-text); }
+.dh-btn--outline:hover { border-color: var(--atmo-brand); background: var(--atmo-soft); }
+.dh-btn--ghost { color: var(--atmo-text); }
+.dh-btn--ghost:hover { background: var(--atmo-soft); }
+.dh-btn:focus-visible { outline: 2px solid var(--atmo-brand); outline-offset: 2px; }
+
+.dh-footer { display: flex; flex-direction: column; gap: 16px; padding: 24px 40px; border-top: 1px solid var(--atmo-border); font-size: 13px; color: var(--atmo-muted); }
+.dh-footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+.dh-footer a { color: var(--atmo-muted); text-decoration: none; }
+.dh-footer a:hover { color: var(--atmo-text); }
+.dh-footer-links { display: flex; align-items: center; gap: 16px; }
+
+@media (max-width: 1080px) {
+  .dh-steps, .dh-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dh-banner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 640px) {
+  .dh-inner { padding: 0 16px; }
+  .dh-hero { padding: 48px 0 40px; }
+  .dh-steps, .dh-grid { grid-template-columns: minmax(0, 1fr); }
+  .dh-search, .dh-install { width: 100%; }
+  .dh-banner { padding: 24px; }
+  .dh-banner-actions { width: 100%; flex-direction: column; }
+  .dh-footer { padding: 24px 16px; }
+}

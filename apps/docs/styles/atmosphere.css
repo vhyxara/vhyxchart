@@ -1,0 +1,88 @@
+/*
+ * Vhyxara brand atmosphere — the landing page's look (aurora glow, gradient text, tinted cards, family bar)
+ * for docs and playground. The same file ships in every docs and playground app; each site sets
+ * --atmo-brand (and, if its palette isn't on --vhyx-color-*, the surface/border/text variables).
+ * Loud effects are for start pages only; content pages get .atmo-page-glow, which stays quiet.
+ */
+:root {
+  --fam-ui: #fb7185;
+  --fam-seal: #34d399;
+  --fam-chart: #38bdf8;
+  --fam-gradient: linear-gradient(90deg, var(--fam-ui), var(--fam-seal), var(--fam-chart));
+  --atmo-brand: var(--vhyx-color-accent);
+  --atmo-surface: var(--vhyx-color-surface);
+  --atmo-border: var(--vhyx-color-border);
+  --atmo-text: var(--vhyx-color-text);
+  --atmo-muted: var(--vhyx-color-text-muted);
+  --atmo-bg: var(--vhyx-color-bg);
+  --atmo-soft: color-mix(in srgb, var(--atmo-brand) 14%, transparent);
+  --atmo-glow: color-mix(in srgb, var(--atmo-brand) 32%, transparent);
+  --atmo-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Hero: aurora behind a fading grid ── */
+.atmo-hero { position: relative; isolation: isolate; overflow: hidden; }
+.atmo-hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--atmo-border) 60%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--atmo-border) 60%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 0%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 0%, #000 30%, transparent 75%);
+}
+.atmo-aurora { position: absolute; inset: -20% 0 auto; height: 560px; z-index: -1; pointer-events: none; filter: blur(90px); opacity: .4; overflow: hidden; }
+.atmo-aurora span { position: absolute; border-radius: 50%; mix-blend-mode: screen; animation: atmo-drift 18s var(--atmo-ease) infinite alternate; }
+.atmo-aurora span:nth-child(1) { width: 520px; height: 360px; left: 10%; top: 18%; background: var(--atmo-brand); }
+.atmo-aurora span:nth-child(2) { width: 360px; height: 280px; left: 56%; top: 6%; background: var(--fam-seal); opacity: .26; animation-duration: 22s; animation-delay: -6s; }
+.atmo-aurora span:nth-child(3) { width: 320px; height: 260px; left: 38%; top: 36%; background: var(--fam-chart); opacity: .22; animation-duration: 26s; animation-delay: -12s; }
+:root[data-theme='light'] .atmo-aurora { opacity: .26; }
+:root[data-theme='light'] .atmo-aurora span { mix-blend-mode: multiply; }
+@keyframes atmo-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(40px, 24px, 0) scale(1.08); }
+}
+
+.atmo-gradient-text {
+  background: linear-gradient(100deg, var(--atmo-brand), color-mix(in srgb, var(--atmo-brand) 55%, #fff) 60%, var(--atmo-brand));
+  background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: atmo-shine 6s linear infinite;
+}
+:root[data-theme='light'] .atmo-gradient-text { background-image: linear-gradient(100deg, var(--atmo-brand), color-mix(in srgb, var(--atmo-brand) 60%, #000) 60%, var(--atmo-brand)); }
+@keyframes atmo-shine { to { background-position: -200% 0; } }
+
+.atmo-eyebrow { font-family: var(--vhyx-font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--atmo-brand); }
+.atmo-family-bar { display: block; width: 120px; height: 3px; border-radius: 99px; background: var(--fam-gradient); }
+
+/* ── Cards: brand-tinted, glowing top edge, lift on hover ── */
+.atmo-card {
+  position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; gap: 10px;
+  padding: 22px; border-radius: 18px; border: 1px solid var(--atmo-border); color: var(--atmo-text); text-decoration: none;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--atmo-brand) 5%, var(--atmo-surface)), var(--atmo-surface) 60%);
+  transition: border-color .3s var(--atmo-ease), transform .3s var(--atmo-ease), box-shadow .3s var(--atmo-ease);
+}
+.atmo-card::after { content: ''; position: absolute; left: 22px; right: 22px; top: 0; height: 1px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--atmo-brand) 70%, transparent), transparent); opacity: .7; }
+a.atmo-card:hover, .atmo-card[data-interactive]:hover { border-color: color-mix(in srgb, var(--atmo-brand) 45%, var(--atmo-border)); transform: translateY(-3px); box-shadow: 0 24px 60px -32px var(--atmo-glow); }
+a.atmo-card:focus-visible { outline: 2px solid var(--atmo-brand); outline-offset: 2px; }
+.atmo-card strong { font-size: 16px; letter-spacing: -.01em; }
+.atmo-card p, .atmo-card span.atmo-card-text { margin: 0; font-size: 14px; line-height: 1.6; color: var(--atmo-muted); }
+.atmo-card-icon {
+  display: inline-flex; width: 38px; height: 38px; align-items: center; justify-content: center; border-radius: 11px; color: var(--atmo-brand);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--atmo-brand) 28%, transparent), color-mix(in srgb, var(--atmo-brand) 8%, transparent));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--atmo-brand) 35%, transparent);
+}
+.atmo-card-more { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: auto; padding-top: 4px; font-size: 13px; font-weight: 600; white-space: nowrap; color: var(--atmo-brand); }
+
+/* ── Quiet glow for content pages and work areas ── */
+.atmo-page-glow { position: relative; isolation: isolate; }
+.atmo-page-glow::before {
+  content: ''; position: absolute; z-index: -1; top: -80px; left: 0; width: min(760px, 100%); height: 320px; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--atmo-brand) 10%, transparent), transparent);
+}
+:root[data-theme='light'] .atmo-page-glow::before { background: radial-gradient(closest-side, color-mix(in srgb, var(--atmo-brand) 7%, transparent), transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .atmo-aurora span, .atmo-gradient-text { animation: none; }
+  .atmo-card { transition: none; }
+  a.atmo-card:hover { transform: none; }
+}
