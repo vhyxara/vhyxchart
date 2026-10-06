@@ -68,6 +68,11 @@ export interface PlayerOptions {
   showErrors?: boolean;
   /** Pause while scrolled off-screen. @default true */
   pauseOffscreen?: boolean;
+  /**
+   * When the diagram is wider than the stage (phones), scroll the stage to keep the moving part in view.
+   * Pauses for a moment whenever the reader swipes the diagram themselves. @default true
+   */
+  follow?: boolean;
 }
 
 /** Events emitted by a player. */
@@ -460,6 +465,43 @@ export function createPlayer(container: HTMLElement, source: string, options: Pl
     }
   };
 
+  // Follow: when the diagram is wider than the stage (phones), keep what is moving in view. The first
+  // non-empty group wins: travelling tokens, then compared cells and pointers, then active parts.
+  const FOCUS = [
+    '.vc-token',
+    '[data-vc-cell][data-compare], .vc-pointer',
+    '[data-vc-edge][data-active], [data-vc-node][data-state="active"], [data-vc-msg][data-state="sending"], [data-vc-cell][data-state="active"]',
+  ];
+  let readerScrollUntil = 0;
+  const readerScrolled = (): void => { readerScrollUntil = (win?.performance.now() ?? 0) + 2500; };
+  for (const type of ['pointerdown', 'wheel', 'touchstart'] as const) stage.addEventListener(type, readerScrolled, { passive: true });
+  const follow = (easing: boolean): void => {
+    if (options.follow === false || !svg || !win) return;
+    const max = stage.scrollWidth - stage.clientWidth;
+    if (max <= 1 || win.performance.now() < readerScrollUntil) return;
+    let els: Element[] = [];
+    for (const sel of FOCUS) {
+      els = Array.from(svg.querySelectorAll(sel));
+      if (els.length) break;
+    }
+    if (!els.length) return;
+    const box = stage.getBoundingClientRect();
+    let lo = Infinity;
+    let hi = -Infinity;
+    for (const e of els) {
+      const r = e.getBoundingClientRect();
+      if (!r.width && !r.height) continue;
+      lo = Math.min(lo, r.left - box.left + stage.scrollLeft);
+      hi = Math.max(hi, r.right - box.left + stage.scrollLeft);
+    }
+    if (!Number.isFinite(lo)) return;
+    const target = Math.max(0, Math.min(max, (lo + hi) / 2 - stage.clientWidth / 2));
+    const reduce = win.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) stage.scrollLeft = target;
+    else if (easing) stage.scrollLeft += (target - stage.scrollLeft) * 0.12;
+    else stage.scrollTo({ left: target, behavior: 'smooth' });
+  };
+
   const apply = (): void => {
     if (!svg || timeline.duration <= 0) return;
     const frame = frameAt(timeline, time);
@@ -507,6 +549,7 @@ export function createPlayer(container: HTMLElement, source: string, options: Pl
       else t.removeAttribute('data-done');
     });
     timeLabel.textContent = `${fmt(time)} / ${fmt(timeline.duration)}`;
+    follow(playing);
     emit('frame', frame);
   };
 
@@ -542,6 +585,7 @@ export function createPlayer(container: HTMLElement, source: string, options: Pl
     if (time >= timeline.duration) time = 0;
     playing = true;
     last = 0;
+    readerScrollUntil = 0;
     playBtn.innerHTML = ICONS.pause;
     playBtn.title = 'Pause';
     playBtn.setAttribute('aria-label', 'Pause');

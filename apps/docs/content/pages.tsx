@@ -377,6 +377,7 @@ code --install-extension packages/vscode/vhyxchart-vscode-0.1.1.vsix`}</Code>
             <tr><td><code>title</code></td><td>diagram title</td><td>Header title.</td></tr>
             <tr><td><code>controlsPosition</code></td><td><code>&apos;bottom&apos;</code></td><td><code>&apos;top&apos;</code> puts the controller above the diagram.</td></tr>
             <tr><td><code>layout</code></td><td><code>&apos;card&apos;</code></td><td><code>&apos;plain&apos;</code> drops the frame to sit inside your own container.</td></tr>
+            <tr><td><code>follow</code></td><td><code>true</code></td><td>On narrow screens, where a wide diagram scrolls sideways, keep the moving part in view as it plays. Pauses briefly when the reader swipes the diagram.</td></tr>
             <tr><td><code>classNames</code> / <code>styles</code></td><td>—</td><td>Class names or inline styles per part: <code>root</code>, <code>header</code>, <code>title</code>, <code>stage</code>, <code>caption</code>, <code>controls</code>, <code>button</code>, <code>play</code>, <code>progress</code>, <code>speed</code>, <code>scenarios</code>, <code>toggle</code>.</td></tr>
           </tbody>
         </table>

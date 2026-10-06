@@ -55,7 +55,7 @@ export function useVhyxChart(source: string, options: PlayerOptions = {}): UseVh
 
   // Mount / unmount when the host element or structural options change. Object options are compared by value
   // so inline `classNames={{…}}` / `styles={{…}}` don't remount on every render. `controls` is applied live below.
-  const { theme, loop, autoplay, showErrors, pauseOffscreen, header, title, layout, controlsToggle, controlsPosition } = options;
+  const { theme, loop, autoplay, showErrors, pauseOffscreen, follow, header, title, layout, controlsToggle, controlsPosition } = options;
   const classKey = JSON.stringify(options.classNames ?? null);
   const styleKey = JSON.stringify(options.styles ?? null);
   useEffect(() => {
@@ -79,7 +79,7 @@ export function useVhyxChart(source: string, options: PlayerOptions = {}): UseVh
       p.destroy();
       setPlayer(null);
     };
-  }, [element, sync, theme, loop, autoplay, showErrors, pauseOffscreen, header, title, layout, controlsToggle, controlsPosition, classKey, styleKey]);
+  }, [element, sync, theme, loop, autoplay, showErrors, pauseOffscreen, follow, header, title, layout, controlsToggle, controlsPosition, classKey, styleKey]);
 
   // Hot-swap source without remounting (keeps scenario and time).
   useEffect(() => {
